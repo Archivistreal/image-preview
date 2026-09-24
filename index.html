@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AETHER_SEC // Elite Ethical Hacking Collective</title>
+  <title>AETHER_SEC // Security & Offensive Intelligence Collective</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,171 +19,131 @@
         extend: {
           fontFamily: {
             mono: ['"Fira Code"', 'monospace'],
-            sans: ['Inter', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            hack: {
-              black: '#0a0d12',
-              darker: '#0d1117',
-              dark: '#161b22',
-              card: '#121824',
-              border: '#232d3f',
-              green: '#00ff66',
-              cyan: '#00e5ff',
-              purple: '#b026ff',
-              red: '#ff2a6d',
-              yellow: '#ffcc00',
-              text: '#e6edf3',
-              muted: '#8b949e'
+            noir: {
+              bg: '#08080a',
+              card: '#111115',
+              surface: '#18181f',
+              border: 'rgba(244, 241, 234, 0.08)',
+              borderHover: 'rgba(244, 241, 234, 0.2)',
+            },
+            cream: {
+              50: '#fcfbf7',
+              100: '#f4f1ea',
+              200: '#e6e1d5',
+              300: '#d5cebe',
+              muted: '#9a9488',
+              dim: '#635e54'
+            },
+            accent: {
+              gold: '#d4af37',
+              cyan: '#38bdf8',
+              green: '#34d399',
+              red: '#f87171'
             }
-          },
-          boxShadow: {
-            'glow-green': '0 0 15px rgba(0, 255, 102, 0.25)',
-            'glow-cyan': '0 0 15px rgba(0, 229, 255, 0.25)',
-            'glow-purple': '0 0 15px rgba(176, 38, 255, 0.25)',
-            'glow-red': '0 0 15px rgba(255, 42, 109, 0.25)',
           }
         }
       }
     }
   </script>
 
-  <!-- Custom CSS for Glassmorphism & Terminal Aesthetics -->
+  <!-- Custom CSS for Calm, Refined Dark/Cream Aesthetics -->
   <style>
     body {
-      background-color: #06090e;
-      color: #e6edf3;
-      font-family: 'Inter', sans-serif;
-      background-image:
-        radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(0, 255, 102, 0.03) 0%, transparent 40%),
-        linear-gradient(to bottom, rgba(10, 13, 18, 0.95), rgba(6, 9, 14, 0.98));
+      background-color: #08080a;
+      color: #f4f1ea;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
-    }
-
-    /* Grid Overlay Pattern */
-    .bg-grid-pattern {
-      background-size: 40px 40px;
       background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        radial-gradient(circle at 50% -10%, rgba(244, 241, 234, 0.03) 0%, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.015) 0%, transparent 40%);
     }
 
-    /* Scanlines Overlay */
-    .scanlines {
-      position: relative;
-      overflow: hidden;
-    }
-    .scanlines::before {
-      content: " ";
-      display: block;
-      position: absolute;
-      top: 0; left: 0; bottom: 0; right: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-      background-size: 100% 4px;
-      z-index: 20;
-      pointer-events: none;
-      opacity: 0.6;
-    }
-
-    /* Glassmorphism Card Style */
+    /* Subtle Glassmorphism Card */
     .glass-card {
-      background: rgba(18, 24, 36, 0.65);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(17, 17, 21, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(244, 241, 234, 0.08);
       border-radius: 0.75rem;
     }
 
     .glass-card-hover {
-      transition: all 0.25s ease-in-out;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .glass-card-hover:hover {
-      background: rgba(22, 31, 46, 0.85);
-      border-color: rgba(0, 229, 255, 0.3);
+      background: rgba(24, 24, 31, 0.85);
+      border-color: rgba(244, 241, 234, 0.2);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px -5px rgba(0, 229, 255, 0.15);
     }
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: #0d1117;
+      background: #08080a;
     }
     ::-webkit-scrollbar-thumb {
-      background: #232d3f;
+      background: #23232b;
       border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #00e5ff;
+      background: #d5cebe;
     }
 
-    /* Pulsing Status Dot */
+    /* Status Dot Pulse */
     .status-pulse {
-      box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
-      animation: pulse-green 2s infinite;
+      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+      animation: pulse-dot 2.5s infinite;
     }
-    @keyframes pulse-green {
+    @keyframes pulse-dot {
       0% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
+        box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
       }
       70% {
         transform: scale(1);
-        box-shadow: 0 0 0 8px rgba(0, 255, 102, 0);
+        box-shadow: 0 0 0 6px rgba(52, 211, 153, 0);
       }
       100% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
+        box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
       }
-    }
-
-    /* Glitch text effect on header */
-    .glitch-text {
-      text-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
     }
   </style>
 </head>
-<body class="bg-grid-pattern antialiased text-hack-text flex flex-col min-h-screen selection:bg-hack-cyan selection:text-black">
+<body class="antialiased text-cream-100 flex flex-col min-h-screen selection:bg-cream-100 selection:text-noir-bg">
 
   <!-- ==================== NAVIGATION BAR ==================== -->
-  <header class="sticky top-0 z-50 bg-hack-black/80 backdrop-blur-md border-b border-hack-border/60 px-4 lg:px-8 py-3">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+  <header class="sticky top-0 z-50 bg-noir-bg/90 backdrop-blur-md border-b border-noir-border px-4 lg:px-8 py-3.5">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
 
-      <!-- Brand & Live Status -->
+      <!-- Brand & Live Status Badge -->
       <div class="flex items-center space-x-3">
-        <div class="flex items-center space-x-2 bg-hack-dark border border-hack-border px-3 py-1.5 rounded-lg">
-          <span class="text-hack-cyan font-mono font-bold text-lg tracking-wider">⚡ AETHER<span class="text-hack-green">_SEC</span></span>
-          <span class="text-xs font-mono text-hack-muted border-l border-hack-border pl-2 hidden md:inline">VANGUARD_V2.4</span>
-        </div>
+        <a href="#" onclick="switchView('public'); return false;" class="flex items-center space-x-2.5">
+          <span class="text-cream-100 font-mono font-bold text-base tracking-widest uppercase">AETHER<span class="text-cream-muted">_SEC</span></span>
+        </a>
 
-        <!-- Live Status Badge -->
-        <div class="flex items-center space-x-2 bg-hack-green/10 border border-hack-green/30 px-2.5 py-1 rounded-full text-xs font-mono text-hack-green">
-          <span class="w-2 h-2 rounded-full bg-hack-green status-pulse"></span>
-          <span>STATUS: <span class="font-bold">ONLINE</span></span>
+        <div class="flex items-center space-x-2 bg-noir-surface border border-noir-border px-2.5 py-1 rounded-full text-[11px] font-mono text-cream-muted">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-green status-pulse"></span>
+          <span>STATUS: <span class="text-cream-100 font-medium">ONLINE</span></span>
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
-      <nav class="flex items-center space-x-1 sm:space-x-2 bg-hack-darker border border-hack-border/80 p-1 rounded-xl text-xs sm:text-sm font-mono">
-        <button id="nav-public" onclick="switchView('public')" class="nav-btn active px-3 sm:px-4 py-1.5 rounded-lg transition-all flex items-center space-x-2 text-hack-cyan bg-hack-border/40 font-semibold">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span>[ Public Info ]</span>
+      <!-- Navigation Switcher (Clean, Public-Facing) -->
+      <nav class="flex items-center space-x-1 sm:space-x-2 bg-noir-surface border border-noir-border p-1 rounded-lg text-xs font-mono">
+        <button id="nav-public" onclick="switchView('public')" class="nav-btn active px-3.5 py-1.5 rounded-md transition text-cream-100 bg-noir-border font-medium">
+          [ Public Info ]
         </button>
-        <button id="nav-apply" onclick="switchView('apply')" class="nav-btn px-3 sm:px-4 py-1.5 rounded-lg transition-all flex items-center space-x-2 text-hack-muted hover:text-hack-text hover:bg-hack-dark">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-          <span>[ Apply ]</span>
+        <button id="nav-apply" onclick="switchView('apply')" class="nav-btn px-3.5 py-1.5 rounded-md transition text-cream-muted hover:text-cream-100 hover:bg-noir-bg">
+          [ Apply ]
         </button>
-        <button id="nav-admin" onclick="switchView('admin')" class="nav-btn px-3 sm:px-4 py-1.5 rounded-lg transition-all flex items-center space-x-2 text-hack-muted hover:text-hack-text hover:bg-hack-dark">
-          <svg class="w-4 h-4 text-hack-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          <span>[ Admin Suite ]</span>
-        </button>
-        <button id="nav-member" onclick="switchView('member')" class="nav-btn px-3 sm:px-4 py-1.5 rounded-lg transition-all flex items-center space-x-2 text-hack-muted hover:text-hack-text hover:bg-hack-dark">
-          <svg class="w-4 h-4 text-hack-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
-          <span>[ Member Hub ]</span>
+        <button id="nav-member" onclick="switchView('member')" class="nav-btn px-3.5 py-1.5 rounded-md transition text-cream-muted hover:text-cream-100 hover:bg-noir-bg">
+          [ Member Hub ]
         </button>
       </nav>
 
@@ -191,66 +151,56 @@
   </header>
 
   <!-- MAIN CONTAINER -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-12">
 
     <!-- ==================== VIEW 1: PUBLIC INFO & RESEARCH DOMAINS ==================== -->
     <section id="view-public" class="space-y-12">
 
       <!-- HERO BANNER -->
-      <div class="glass-card p-6 sm:p-10 border-hack-border/80 relative overflow-hidden">
-        <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-hack-cyan/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="glass-card p-6 sm:p-12 border-noir-border relative overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
           <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-hack-cyan/10 border border-hack-cyan/30 text-hack-cyan text-xs font-mono">
-              <span class="animate-pulse">●</span>
-              <span>OFFENSIVE SECURITY & RESEARCH COLLECTIVE</span>
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded border border-noir-border bg-noir-surface text-cream-muted text-xs font-mono">
+              <span>SECURITY RESEARCH & OFFENSIVE INTELLIGENCE</span>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-mono text-white leading-tight">
-              DECENTRALIZED <br>
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-hack-green via-hack-cyan to-hack-purple glitch-text">CYBER INTELLIGENCE</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-sans text-cream-100 leading-tight">
+              Decentralized <br>
+              <span class="text-cream-muted font-normal">Cyber Intelligence</span>
             </h1>
 
-            <p class="text-hack-muted text-sm sm:text-base leading-relaxed max-w-2xl font-sans">
-              AetherSec is an invite-only global collective of security researchers, exploit developers, and reverse engineers pushing the boundaries of vulnerability discovery, offensive tooling, and cryptographic defense.
+            <p class="text-cream-muted text-sm sm:text-base leading-relaxed max-w-xl font-sans">
+              AetherSec is a peer-vetted collective of security researchers, exploit authors, and reverse engineers advancing vulnerability discovery, firmware auditing, and defensive cryptography.
             </p>
 
-            <div class="flex flex-wrap gap-4 pt-2">
-              <button onclick="switchView('apply')" class="px-6 py-3 bg-gradient-to-r from-hack-cyan to-blue-600 text-black font-mono font-bold rounded-lg shadow-glow-cyan hover:opacity-90 transition flex items-center space-x-2">
-                <span>APPLY FOR MEMBERSHIP</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <div class="flex flex-wrap gap-3 pt-2 font-mono text-xs">
+              <button onclick="switchView('apply')" class="px-5 py-2.5 bg-cream-100 text-noir-bg font-semibold rounded-md hover:bg-cream-200 transition">
+                Apply for Membership &rarr;
               </button>
-              <button onclick="switchView('member')" class="px-6 py-3 bg-hack-dark border border-hack-border hover:border-hack-green text-hack-green font-mono font-semibold rounded-lg transition flex items-center space-x-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-                <span>ENTER WORKSPACE</span>
+              <button onclick="switchView('member')" class="px-5 py-2.5 bg-noir-surface border border-noir-border text-cream-100 hover:border-cream-muted rounded-md transition">
+                Enter Workspace
               </button>
             </div>
           </div>
 
-          <!-- Animated Terminal Box -->
+          <!-- Calm Terminal Output Card -->
           <div class="lg:col-span-5">
-            <div class="bg-hack-black/90 border border-hack-border rounded-xl p-4 font-mono text-xs shadow-2xl scanlines relative">
-              <div class="flex items-center justify-between border-b border-hack-border/60 pb-2 mb-3">
-                <div class="flex space-x-1.5">
-                  <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-                  <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-                  <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
-                </div>
-                <span class="text-hack-muted text-[10px]">aether_daemon@node-01:~</span>
+            <div class="bg-noir-bg/90 border border-noir-border rounded-lg p-4 font-mono text-xs space-y-2">
+              <div class="flex items-center justify-between border-b border-noir-border pb-2 mb-3 text-[11px] text-cream-dim">
+                <span>node-01.aether.sec</span>
+                <span>sys.ctl: strict</span>
               </div>
-
-              <div id="hero-terminal" class="space-y-1 text-hack-text min-h-[180px]">
-                <p class="text-hack-muted">$ sysctl -a | grep security.level</p>
-                <p class="text-hack-green">security.level = 2 (STRICT)</p>
-                <p class="text-hack-muted">$ ./init_mesh_network.sh --mode=stealth</p>
-                <p class="text-hack-cyan">[+] Encrypted node mesh established across 14 regions.</p>
-                <p class="text-hack-cyan">[+] Zero-day database synchronized. Integrity verified.</p>
-                <p class="text-hack-muted">$ cat /etc/aether_status</p>
-                <p class="text-hack-purple">[!] WAR ROOM CTF ACTIVE: 32 Teams competing.</p>
-                <p class="text-hack-green flex items-center">
-                  <span>&gt; SYSTEM READY.</span>
-                  <span class="w-2 h-4 bg-hack-green ml-1 inline-block animate-pulse"></span>
+              <div id="hero-terminal" class="space-y-1 text-cream-muted text-[11px] min-h-[160px]">
+                <p class="text-cream-dim">$ sysctl -a | grep mesh.status</p>
+                <p class="text-cream-100">[+] Encrypted node mesh established across 14 regions.</p>
+                <p class="text-cream-dim">$ cat /etc/aether_advisories</p>
+                <p class="text-cream-200">[!] 3 Zero-day advisories peer-verified & queued.</p>
+                <p class="text-cream-dim">$ ping workspace.local</p>
+                <p class="text-cream-100">&gt; 64 bytes from workspace: icmp_seq=1 ttl=64 time=11.2 ms</p>
+                <p class="text-cream-300 flex items-center pt-2">
+                  <span>&gt; SYSTEM ONLINE.</span>
+                  <span class="w-2 h-3 bg-cream-100 ml-1.5 inline-block animate-pulse"></span>
                 </p>
               </div>
             </div>
@@ -258,127 +208,124 @@
 
         </div>
 
-        <!-- Metric Grid Counter -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-hack-border/60 text-center font-mono">
-          <div class="bg-hack-black/40 border border-hack-border/50 p-4 rounded-lg">
-            <div class="text-2xl font-bold text-hack-green">142</div>
-            <div class="text-xs text-hack-muted mt-1">VETTED RESEARCHERS</div>
+        <!-- Metric Counter Row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-noir-border text-center font-mono">
+          <div>
+            <div class="text-xl font-bold text-cream-100">142</div>
+            <div class="text-[11px] text-cream-dim mt-0.5">VETTED RESEARCHERS</div>
           </div>
-          <div class="bg-hack-black/40 border border-hack-border/50 p-4 rounded-lg">
-            <div class="text-2xl font-bold text-hack-cyan">89+</div>
-            <div class="text-xs text-hack-muted mt-1">CVEs DISCOVERED</div>
+          <div>
+            <div class="text-xl font-bold text-cream-100">89+</div>
+            <div class="text-[11px] text-cream-dim mt-0.5">CVEs DISCOVERED</div>
           </div>
-          <div class="bg-hack-black/40 border border-hack-border/50 p-4 rounded-lg">
-            <div class="text-2xl font-bold text-hack-purple">#3</div>
-            <div class="text-xs text-hack-muted mt-1">GLOBAL CTF RANK</div>
+          <div>
+            <div class="text-xl font-bold text-cream-100">#3</div>
+            <div class="text-[11px] text-cream-dim mt-0.5">GLOBAL CTF RANK</div>
           </div>
-          <div class="bg-hack-black/40 border border-hack-border/50 p-4 rounded-lg">
-            <div class="text-2xl font-bold text-hack-red">100%</div>
-            <div class="text-xs text-hack-muted mt-1">PEER-REVIEWED POCs</div>
+          <div>
+            <div class="text-xl font-bold text-cream-100">100%</div>
+            <div class="text-[11px] text-cream-dim mt-0.5">PEER-REVIEWED POCs</div>
           </div>
         </div>
       </div>
 
       <!-- RESEARCH DOMAINS CARDS -->
       <div class="space-y-6">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between border-b border-noir-border pb-4">
           <div>
-            <h2 class="text-2xl font-mono font-bold text-white flex items-center gap-2">
-              <span class="text-hack-cyan">//</span> RESEARCH DOMAINS
-            </h2>
-            <p class="text-xs text-hack-muted font-mono">Core offensive security specializations cultivated within the collective.</p>
+            <h2 class="text-xl font-sans font-semibold text-cream-100">Research Domains</h2>
+            <p class="text-xs text-cream-muted font-mono mt-0.5">Primary sectors of offensive security research and analysis.</p>
           </div>
-          <span class="text-xs font-mono text-hack-cyan border border-hack-cyan/30 px-2.5 py-1 rounded bg-hack-cyan/10 hidden sm:inline-block">5 ACTIVE SECTORS</span>
+          <span class="text-xs font-mono text-cream-dim">5 ACTIVE SECTORS</span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
           <!-- Domain 1 -->
-          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer border-l-4 border-l-hack-cyan" onclick="openDomainModal('web')">
+          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer" onclick="openDomainModal('web')">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="p-2 rounded-lg bg-hack-cyan/10 text-hack-cyan font-mono text-xl">🌐</span>
-                <span class="text-[10px] font-mono bg-hack-dark px-2 py-1 rounded border border-hack-border text-hack-cyan">SECTOR-01</span>
+              <div class="flex items-center justify-between mb-3 font-mono text-xs">
+                <span class="text-cream-100 font-bold">01</span>
+                <span class="text-cream-dim text-[10px]">WEB_EXPLOITATION</span>
               </div>
-              <h3 class="text-lg font-mono font-bold text-white mb-2">Web Exploitation</h3>
-              <p class="text-xs text-hack-muted leading-relaxed mb-4">Advanced modern web vectors: GraphQL introspection breaches, SSRF chains, OAuth flow hijackings, and HTTP Request Smuggling.</p>
+              <h3 class="text-base font-semibold text-cream-100 mb-2">Web Exploitation</h3>
+              <p class="text-xs text-cream-muted leading-relaxed mb-4">HTTP request smuggling, GraphQL query recursion, SSRF chains into metadata services, and OAuth flow flaws.</p>
             </div>
-            <div class="flex items-center justify-between pt-3 border-t border-hack-border/40 text-xs font-mono text-hack-cyan">
-              <span>View Research Papers</span>
+            <div class="flex items-center justify-between pt-3 border-t border-noir-border text-xs font-mono text-cream-muted">
+              <span>View Details</span>
               <span>&rarr;</span>
             </div>
           </div>
 
           <!-- Domain 2 -->
-          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer border-l-4 border-l-hack-green" onclick="openDomainModal('malware')">
+          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer" onclick="openDomainModal('malware')">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="p-2 rounded-lg bg-hack-green/10 text-hack-green font-mono text-xl">🦠</span>
-                <span class="text-[10px] font-mono bg-hack-dark px-2 py-1 rounded border border-hack-border text-hack-green">SECTOR-02</span>
+              <div class="flex items-center justify-between mb-3 font-mono text-xs">
+                <span class="text-cream-100 font-bold">02</span>
+                <span class="text-cream-dim text-[10px]">MALWARE_ANALYSIS</span>
               </div>
-              <h3 class="text-lg font-mono font-bold text-white mb-2">Malware Analysis</h3>
-              <p class="text-xs text-hack-muted leading-relaxed mb-4">Dynamic and static analysis of APT payloads, ransomware decryptor development, YARA rule generation, and kernel-mode rootkit dissecting.</p>
+              <h3 class="text-base font-semibold text-cream-100 mb-2">Malware Analysis</h3>
+              <p class="text-xs text-cream-muted leading-relaxed mb-4">APT payload disassembly, memory forensics, YARA signature authoring, and ransomware decryptor development.</p>
             </div>
-            <div class="flex items-center justify-between pt-3 border-t border-hack-border/40 text-xs font-mono text-hack-green">
-              <span>View Analysis Reports</span>
+            <div class="flex items-center justify-between pt-3 border-t border-noir-border text-xs font-mono text-cream-muted">
+              <span>View Details</span>
               <span>&rarr;</span>
             </div>
           </div>
 
           <!-- Domain 3 -->
-          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer border-l-4 border-l-hack-purple" onclick="openDomainModal('reversing')">
+          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer" onclick="openDomainModal('reversing')">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="p-2 rounded-lg bg-hack-purple/10 text-hack-purple font-mono text-xl">⚙️</span>
-                <span class="text-[10px] font-mono bg-hack-dark px-2 py-1 rounded border border-hack-border text-hack-purple">SECTOR-03</span>
+              <div class="flex items-center justify-between mb-3 font-mono text-xs">
+                <span class="text-cream-100 font-bold">03</span>
+                <span class="text-cream-dim text-[10px]">REVERSE_ENG</span>
               </div>
-              <h3 class="text-lg font-mono font-bold text-white mb-2">Reverse Engineering</h3>
-              <p class="text-xs text-hack-muted leading-relaxed mb-4">Decompilation of binary executables, custom firmware protocol reversing, anti-debugging bypasses, and Ghidra/IDA plugin architecture.</p>
+              <h3 class="text-base font-semibold text-cream-100 mb-2">Reverse Engineering</h3>
+              <p class="text-xs text-cream-muted leading-relaxed mb-4">Decompilation of binary targets, Ghidra headless scripts, ARM/MIPS firmware extraction, and protocol reversing.</p>
             </div>
-            <div class="flex items-center justify-between pt-3 border-t border-hack-border/40 text-xs font-mono text-hack-purple">
-              <span>View Reversing Specs</span>
+            <div class="flex items-center justify-between pt-3 border-t border-noir-border text-xs font-mono text-cream-muted">
+              <span>View Details</span>
               <span>&rarr;</span>
             </div>
           </div>
 
           <!-- Domain 4 -->
-          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer border-l-4 border-l-hack-yellow" onclick="openDomainModal('osint')">
+          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer" onclick="openDomainModal('osint')">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="p-2 rounded-lg bg-yellow-500/10 text-yellow-400 font-mono text-xl">🔍</span>
-                <span class="text-[10px] font-mono bg-hack-dark px-2 py-1 rounded border border-hack-border text-yellow-400">SECTOR-04</span>
+              <div class="flex items-center justify-between mb-3 font-mono text-xs">
+                <span class="text-cream-100 font-bold">04</span>
+                <span class="text-cream-dim text-[10px]">OSINT_RECON</span>
               </div>
-              <h3 class="text-lg font-mono font-bold text-white mb-2">OSINT & Reconnaissance</h3>
-              <p class="text-xs text-hack-muted leading-relaxed mb-4">Threat actor tracking, automated attack surface mapping, GEOINT intelligence extraction, and darknet credential leak correlation.</p>
+              <h3 class="text-base font-semibold text-cream-100 mb-2">OSINT & Reconnaissance</h3>
+              <p class="text-xs text-cream-muted leading-relaxed mb-4">Passive ASN correlation, darknet credential leak mapping, GEOINT intelligence, and attack surface enumeration.</p>
             </div>
-            <div class="flex items-center justify-between pt-3 border-t border-hack-border/40 text-xs font-mono text-yellow-400">
-              <span>View Intel Tools</span>
+            <div class="flex items-center justify-between pt-3 border-t border-noir-border text-xs font-mono text-cream-muted">
+              <span>View Details</span>
               <span>&rarr;</span>
             </div>
           </div>
 
           <!-- Domain 5 -->
-          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer border-l-4 border-l-hack-red" onclick="openDomainModal('binary')">
+          <div class="glass-card glass-card-hover p-6 flex flex-col justify-between cursor-pointer" onclick="openDomainModal('binary')">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="p-2 rounded-lg bg-hack-red/10 text-hack-red font-mono text-xl">💣</span>
-                <span class="text-[10px] font-mono bg-hack-dark px-2 py-1 rounded border border-hack-border text-hack-red">SECTOR-05</span>
+              <div class="flex items-center justify-between mb-3 font-mono text-xs">
+                <span class="text-cream-100 font-bold">05</span>
+                <span class="text-cream-dim text-[10px]">BINARY_PWN</span>
               </div>
-              <h3 class="text-lg font-mono font-bold text-white mb-2">Binary Exploitation & CTF</h3>
-              <p class="text-xs text-hack-muted leading-relaxed mb-4">Linux/Windows kernel pwnage, ROP chain synthesis, glibc heap exploitation, and competitive CTF war room strategies.</p>
+              <h3 class="text-base font-semibold text-cream-100 mb-2">Binary Exploitation & CTF</h3>
+              <p class="text-xs text-cream-muted leading-relaxed mb-4">Linux kernel pwnage, ROP/JOP chain construction, glibc heap exploitation, and competitive CTF strategies.</p>
             </div>
-            <div class="flex items-center justify-between pt-3 border-t border-hack-border/40 text-xs font-mono text-hack-red">
-              <span>View CTF Writeups</span>
+            <div class="flex items-center justify-between pt-3 border-t border-noir-border text-xs font-mono text-cream-muted">
+              <span>View Details</span>
               <span>&rarr;</span>
             </div>
           </div>
 
           <!-- Callout Card -->
-          <div class="glass-card p-6 flex flex-col justify-center items-center text-center border border-dashed border-hack-border bg-hack-dark/40">
-            <div class="w-12 h-12 rounded-full bg-hack-green/10 border border-hack-green/30 flex items-center justify-center text-hack-green font-mono font-bold text-xl mb-3">+</div>
-            <h3 class="text-base font-mono font-bold text-white mb-1">Got Unique Skills?</h3>
-            <p class="text-xs text-hack-muted mb-4 max-w-xs">We welcome unconventional researchers specializing in hardware hacking, satellite comms, or quantum cryptography.</p>
-            <button onclick="switchView('apply')" class="px-4 py-2 bg-hack-border hover:bg-hack-green hover:text-black text-xs font-mono font-semibold rounded transition">SUBMIT PROOF OF WORK</button>
+          <div class="glass-card p-6 flex flex-col justify-center items-center text-center border-dashed border-noir-border">
+            <h3 class="text-sm font-semibold text-cream-100 mb-1">Unique Technical Background?</h3>
+            <p class="text-xs text-cream-muted mb-4 max-w-xs">We review proof of work across hardware security, cryptography, and network engineering.</p>
+            <button onclick="switchView('apply')" class="px-4 py-2 bg-noir-surface hover:bg-cream-100 hover:text-noir-bg border border-noir-border text-cream-100 text-xs font-mono rounded transition">Submit Application</button>
           </div>
 
         </div>
@@ -386,72 +333,52 @@
 
       <!-- OPEN-SOURCE TOOLS SHOWCASE -->
       <div class="space-y-6">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-2xl font-mono font-bold text-white flex items-center gap-2">
-              <span class="text-hack-green">//</span> OPEN-SOURCE TOOLKITS
-            </h2>
-            <p class="text-xs text-hack-muted font-mono">Custom utilities authored by collective members for community auditing.</p>
-          </div>
+        <div class="border-b border-noir-border pb-4">
+          <h2 class="text-xl font-sans font-semibold text-cream-100">Open-Source Toolkits</h2>
+          <p class="text-xs text-cream-muted font-mono mt-0.5">Audited utilities developed by members for community security testing.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
           <!-- Tool 1 -->
-          <div class="glass-card p-5 border-hack-border space-y-4">
+          <div class="glass-card p-5 space-y-3 font-mono text-xs">
             <div class="flex items-center justify-between">
-              <span class="font-mono font-bold text-hack-cyan text-base">PhantomRecon-v2</span>
-              <span class="text-[10px] font-mono bg-hack-cyan/10 text-hack-cyan border border-hack-cyan/30 px-2 py-0.5 rounded">PYTHON / ASYNC</span>
+              <span class="font-bold text-cream-100">PhantomRecon-v2</span>
+              <span class="text-[10px] text-cream-dim border border-noir-border px-2 py-0.5 rounded">PYTHON</span>
             </div>
-            <p class="text-xs text-hack-muted">Asynchronous multi-threaded attack surface crawler with sub-domain takeover heuristics and active S3 bucket permission checkers.</p>
-
-            <div class="bg-hack-black p-3 rounded-lg border border-hack-border/80 font-mono text-[11px] relative">
-              <button onclick="copySnippet(this, 'python phantom.py -t target.com --stealth --threads 50')" class="absolute top-2 right-2 px-2 py-1 bg-hack-dark border border-hack-border hover:border-hack-cyan text-[10px] text-hack-muted hover:text-hack-cyan rounded transition">
-                Copy
-              </button>
-              <pre class="text-hack-text overflow-x-auto"><code><span class="text-hack-purple">import</span> asyncio, phantom
-scanner = phantom.Scanner(target=<span class="text-hack-green">"target.com"</span>)
-results = asyncio.run(scanner.run_recon())
-<span class="text-hack-cyan">print</span>(f<span class="text-hack-green">"[+] Discovered {len(results)} exposed subdomains"</span>)</code></pre>
+            <p class="text-xs font-sans text-cream-muted">Asynchronous attack surface crawler with subdomain takeover heuristics.</p>
+            <div class="bg-noir-bg p-3 rounded border border-noir-border text-[11px] relative">
+              <button onclick="copySnippet(this, 'python phantom.py -t target.com --threads 50')" class="absolute top-2 right-2 px-2 py-0.5 bg-noir-surface border border-noir-border text-cream-muted hover:text-cream-100 rounded text-[10px]">Copy</button>
+              <pre class="text-cream-200 overflow-x-auto"><code>scanner = phantom.Scanner("target.com")
+results = asyncio.run(scanner.run())</code></pre>
             </div>
           </div>
 
           <!-- Tool 2 -->
-          <div class="glass-card p-5 border-hack-border space-y-4">
+          <div class="glass-card p-5 space-y-3 font-mono text-xs">
             <div class="flex items-center justify-between">
-              <span class="font-mono font-bold text-hack-green text-base">HeapPwn-Forge</span>
-              <span class="text-[10px] font-mono bg-hack-green/10 text-hack-green border border-hack-green/30 px-2 py-0.5 rounded">C++ / GLIBC 2.35</span>
+              <span class="font-bold text-cream-100">HeapPwn-Forge</span>
+              <span class="text-[10px] text-cream-dim border border-noir-border px-2 py-0.5 rounded">C++</span>
             </div>
-            <p class="text-xs text-hack-muted">Automated heap payload layout builder targeting tcache poisoning, house of apple, and fastbin dup attacks.</p>
-
-            <div class="bg-hack-black p-3 rounded-lg border border-hack-border/80 font-mono text-[11px] relative">
-              <button onclick="copySnippet(this, 'heappwn --target ./vulnerable_bin --glibc 2.35 --leak-libc')" class="absolute top-2 right-2 px-2 py-1 bg-hack-dark border border-hack-border hover:border-hack-green text-[10px] text-hack-muted hover:text-hack-green rounded transition">
-                Copy
-              </button>
-              <pre class="text-hack-text overflow-x-auto"><code><span class="text-hack-purple">#include</span> <span class="text-hack-green">&lt;heappwn.h&gt;</span>
-HeapTarget t(<span class="text-hack-green">"./binary"</span>);
-t.tcache_poison(target_addr, payload);
-t.trigger_malloc();
-<span class="text-hack-cyan">LOG_SUCCESS</span>(<span class="text-hack-green">"Shellcode injected into heap chunk"</span>);</code></pre>
+            <p class="text-xs font-sans text-cream-muted">Heap payload layout builder for glibc tcache poisoning and bin dupes.</p>
+            <div class="bg-noir-bg p-3 rounded border border-noir-border text-[11px] relative">
+              <button onclick="copySnippet(this, 'heappwn --target ./vulnerable_bin --glibc 2.35')" class="absolute top-2 right-2 px-2 py-0.5 bg-noir-surface border border-noir-border text-cream-muted hover:text-cream-100 rounded text-[10px]">Copy</button>
+              <pre class="text-cream-200 overflow-x-auto"><code>HeapTarget t("./binary");
+t.tcache_poison(addr, payload);</code></pre>
             </div>
           </div>
 
           <!-- Tool 3 -->
-          <div class="glass-card p-5 border-hack-border space-y-4">
+          <div class="glass-card p-5 space-y-3 font-mono text-xs">
             <div class="flex items-center justify-between">
-              <span class="font-mono font-bold text-hack-purple text-base">WebVulnTrace</span>
-              <span class="text-[10px] font-mono bg-hack-purple/10 text-hack-purple border border-hack-purple/30 px-2 py-0.5 rounded">GO / HTTP2</span>
+              <span class="font-bold text-cream-100">WebVulnTrace</span>
+              <span class="text-[10px] text-cream-dim border border-noir-border px-2 py-0.5 rounded">GO</span>
             </div>
-            <p class="text-xs text-hack-muted">High-performance HTTP request smuggling fuzzing engine designed to detect desync anomalies across CDN reverse proxies.</p>
-
-            <div class="bg-hack-black p-3 rounded-lg border border-hack-border/80 font-mono text-[11px] relative">
-              <button onclick="copySnippet(this, 'go run main.go -u https://api.internal/v1 -method CL.TE')" class="absolute top-2 right-2 px-2 py-1 bg-hack-dark border border-hack-border hover:border-hack-purple text-[10px] text-hack-muted hover:text-hack-purple rounded transition">
-                Copy
-              </button>
-              <pre class="text-hack-text overflow-x-auto"><code><span class="text-hack-purple">package</span> main
-<span class="text-hack-purple">import</span> <span class="text-hack-green">"github.com/aether/vulntrace"</span>
-fuzzer := vulntrace.NewDesyncFuzzer(<span class="text-hack-green">"CL.TE"</span>)
-fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"</span>)</code></pre>
+            <p class="text-xs font-sans text-cream-muted">HTTP request smuggling fuzzing engine for reverse proxy desync detection.</p>
+            <div class="bg-noir-bg p-3 rounded border border-noir-border text-[11px] relative">
+              <button onclick="copySnippet(this, 'go run main.go -u https://api.internal/v1')" class="absolute top-2 right-2 px-2 py-0.5 bg-noir-surface border border-noir-border text-cream-muted hover:text-cream-100 rounded text-[10px]">Copy</button>
+              <pre class="text-cream-200 overflow-x-auto"><code>fuzzer := vulntrace.NewFuzzer("CL.TE")
+fuzzer.FuzzEndpoint(targetUrl)</code></pre>
             </div>
           </div>
 
@@ -461,101 +388,95 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     </section>
 
     <!-- ==================== VIEW 2: APPLICATION FORM ==================== -->
-    <section id="view-apply" class="hidden space-y-8 max-w-3xl mx-auto">
+    <section id="view-apply" class="hidden space-y-8 max-w-2xl mx-auto">
 
-      <div class="text-center space-y-3">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-hack-cyan/10 border border-hack-cyan/30 text-hack-cyan text-xs font-mono">
-          <span>MEMBERSHIP SCREENING // RECRUITMENT PHASE 2025</span>
-        </div>
-        <h1 class="text-3xl font-mono font-bold text-white">APPLY FOR COLLECTIVE MEMBERSHIP</h1>
-        <p class="text-xs sm:text-sm text-hack-muted max-w-lg mx-auto">
-          All applications undergo peer evaluation by core members. Provide verified links to writeups, CVE advisories, GitHub repositories, or CTF rankings.
+      <div class="text-center space-y-2">
+        <h1 class="text-2xl font-sans font-bold text-cream-100">Membership Application</h1>
+        <p class="text-xs text-cream-muted max-w-md mx-auto font-sans">
+          Applications are reviewed by core members. Provide verifiable links to research writeups, CVE advisories, GitHub code, or CTF profiles.
         </p>
       </div>
 
       <!-- Application Card -->
-      <div class="glass-card p-6 sm:p-8 border-hack-border relative">
-        <form id="application-form" onsubmit="handleApplySubmit(event)" class="space-y-6">
+      <div class="glass-card p-6 sm:p-8 border-noir-border">
+        <form id="application-form" onsubmit="handleApplySubmit(event)" class="space-y-5">
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <!-- Handle/Alias -->
-            <div class="space-y-2">
-              <label for="apply-handle" class="block font-mono text-xs text-hack-cyan font-semibold">
-                HANDLE / ALIAS <span class="text-hack-red">*</span>
+            <div class="space-y-1.5">
+              <label for="apply-handle" class="block font-mono text-xs text-cream-muted">
+                HANDLE / ALIAS <span class="text-cream-100">*</span>
               </label>
-              <input type="text" id="apply-handle" required placeholder="e.g. x0r_phantom"
-                class="w-full bg-hack-black/90 border border-hack-border focus:border-hack-cyan focus:ring-1 focus:ring-hack-cyan rounded-lg px-4 py-2.5 text-sm font-mono text-white placeholder-hack-muted outline-none transition">
+              <input type="text" id="apply-handle" required placeholder="e.g. x0r_ghost"
+                class="w-full bg-noir-bg border border-noir-border focus:border-cream-muted rounded px-3.5 py-2 text-xs font-mono text-cream-100 placeholder-cream-dim outline-none transition">
             </div>
 
             <!-- Email/Discord -->
-            <div class="space-y-2">
-              <label for="apply-contact" class="block font-mono text-xs text-hack-cyan font-semibold">
-                EMAIL / DISCORD HANDLE <span class="text-hack-red">*</span>
+            <div class="space-y-1.5">
+              <label for="apply-contact" class="block font-mono text-xs text-cream-muted">
+                EMAIL / DISCORD <span class="text-cream-100">*</span>
               </label>
-              <input type="text" id="apply-contact" required placeholder="e.g. cipher@sec.org or cyb#1337"
-                class="w-full bg-hack-black/90 border border-hack-border focus:border-hack-cyan focus:ring-1 focus:ring-hack-cyan rounded-lg px-4 py-2.5 text-sm font-mono text-white placeholder-hack-muted outline-none transition">
+              <input type="text" id="apply-contact" required placeholder="e.g. agent@sec.org"
+                class="w-full bg-noir-bg border border-noir-border focus:border-cream-muted rounded px-3.5 py-2 text-xs font-mono text-cream-100 placeholder-cream-dim outline-none transition">
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <!-- Specialty Domain -->
-            <div class="space-y-2">
-              <label for="apply-domain" class="block font-mono text-xs text-hack-cyan font-semibold">
-                SPECIALTY DOMAIN <span class="text-hack-red">*</span>
+            <div class="space-y-1.5">
+              <label for="apply-domain" class="block font-mono text-xs text-cream-muted">
+                PRIMARY SPECIALTY <span class="text-cream-100">*</span>
               </label>
               <select id="apply-domain" required
-                class="w-full bg-hack-black/90 border border-hack-border focus:border-hack-cyan focus:ring-1 focus:ring-hack-cyan rounded-lg px-4 py-2.5 text-sm font-mono text-white outline-none transition">
+                class="w-full bg-noir-bg border border-noir-border focus:border-cream-muted rounded px-3.5 py-2 text-xs font-mono text-cream-100 outline-none transition">
                 <option value="Web Exploitation">Web Exploitation</option>
                 <option value="Malware Analysis">Malware Analysis</option>
                 <option value="Reverse Engineering">Reverse Engineering</option>
                 <option value="OSINT & Reconnaissance">OSINT & Reconnaissance</option>
                 <option value="Binary Exploitation & CTF">Binary Exploitation & CTF</option>
-                <option value="Cryptography & Hardware">Cryptography & Hardware</option>
               </select>
             </div>
 
             <!-- Portfolio/GitHub Link -->
-            <div class="space-y-2">
-              <label for="apply-portfolio" class="block font-mono text-xs text-hack-cyan font-semibold">
-                GITHUB / PORTFOLIO / CTF LINK <span class="text-hack-red">*</span>
+            <div class="space-y-1.5">
+              <label for="apply-portfolio" class="block font-mono text-xs text-cream-muted">
+                PORTFOLIO / GITHUB LINK <span class="text-cream-100">*</span>
               </label>
-              <input type="url" id="apply-portfolio" required placeholder="https://github.com/yourhandle or CTFtime profile"
-                class="w-full bg-hack-black/90 border border-hack-border focus:border-hack-cyan focus:ring-1 focus:ring-hack-cyan rounded-lg px-4 py-2.5 text-sm font-mono text-white placeholder-hack-muted outline-none transition">
+              <input type="url" id="apply-portfolio" required placeholder="https://github.com/..."
+                class="w-full bg-noir-bg border border-noir-border focus:border-cream-muted rounded px-3.5 py-2 text-xs font-mono text-cream-100 placeholder-cream-dim outline-none transition">
             </div>
           </div>
 
           <!-- Brief Bio / Proof of Work -->
-          <div class="space-y-2">
-            <label for="apply-bio" class="block font-mono text-xs text-hack-cyan font-semibold">
-              BRIEF BIO & PROOF OF WORK <span class="text-hack-red">*</span>
+          <div class="space-y-1.5">
+            <label for="apply-bio" class="block font-mono text-xs text-cream-muted">
+              PROOF OF WORK & BRIEF BIO <span class="text-cream-100">*</span>
             </label>
-            <textarea id="apply-bio" rows="4" required placeholder="Detail your notable security research, exploits developed, CTF writeups, or security tools created..."
-              class="w-full bg-hack-black/90 border border-hack-border focus:border-hack-cyan focus:ring-1 focus:ring-hack-cyan rounded-lg px-4 py-2.5 text-sm font-mono text-white placeholder-hack-muted outline-none transition"></textarea>
+            <textarea id="apply-bio" rows="4" required placeholder="Detail notable security research, exploits written, CTF achievements, or open source tools authored..."
+              class="w-full bg-noir-bg border border-noir-border focus:border-cream-muted rounded px-3.5 py-2 text-xs font-mono text-cream-100 placeholder-cream-dim outline-none transition"></textarea>
           </div>
 
-          <!-- Mini Technical Screening Challenge -->
-          <div class="bg-hack-black/60 border border-hack-border/80 p-4 rounded-lg space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono text-hack-yellow font-bold flex items-center gap-1.5">
-                ⚡ OPTIONAL SCREENING CHALLENGE
-              </span>
-              <span class="text-[10px] font-mono text-hack-muted">Decode base64 to prove human researcher</span>
+          <!-- Screening Challenge -->
+          <div class="bg-noir-bg p-4 rounded border border-noir-border space-y-2">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-cream-100 font-semibold">HUMAN VERIFICATION</span>
+              <span class="text-cream-dim text-[10px]">Decode Base64</span>
             </div>
-            <p class="text-xs font-mono text-hack-muted">
-              Challenge Hash: <code class="text-hack-cyan">QUVUSEVSX0NPTExFQ1RJVkVfMjAyNQ==</code>
+            <p class="text-[11px] font-mono text-cream-muted">
+              Hash: <code class="text-cream-100">QUVUSEVSX0NPTExFQ1RJVkVfMjAyNQ==</code>
             </p>
             <div class="flex gap-2">
-              <input type="text" id="apply-challenge-ans" placeholder="Decoded Flag String"
-                class="flex-1 bg-hack-dark border border-hack-border text-xs font-mono px-3 py-2 text-white rounded outline-none focus:border-hack-yellow">
-              <button type="button" onclick="verifyChallenge()" class="px-3 py-2 bg-hack-dark hover:bg-hack-border text-hack-yellow text-xs font-mono rounded border border-hack-yellow/40 transition">
-                Verify Flag
+              <input type="text" id="apply-challenge-ans" placeholder="Decoded string"
+                class="flex-1 bg-noir-surface border border-noir-border text-xs font-mono px-3 py-1.5 text-cream-100 rounded outline-none focus:border-cream-muted">
+              <button type="button" onclick="verifyChallenge()" class="px-3 py-1.5 bg-noir-surface hover:bg-noir-border border border-noir-border text-cream-muted hover:text-cream-100 text-xs font-mono rounded transition">
+                Verify
               </button>
             </div>
             <div id="challenge-feedback" class="text-[11px] font-mono hidden"></div>
           </div>
 
           <div class="pt-2">
-            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-hack-green to-hack-cyan text-black font-mono font-bold text-sm rounded-lg shadow-glow-green hover:opacity-90 transition">
+            <button type="submit" class="w-full py-3 bg-cream-100 text-noir-bg font-mono font-bold text-xs rounded hover:bg-cream-200 transition">
               SUBMIT APPLICATION FOR REVIEW
             </button>
           </div>
@@ -565,24 +486,23 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
 
     </section>
 
-    <!-- ==================== VIEW 3: ADMIN APPROVAL & PASSKEY GENERATION SUITE ==================== -->
+    <!-- ==================== VIEW 3: DISCREET ADMIN APPROVAL & PASSKEY SUITE ==================== -->
     <section id="view-admin" class="hidden space-y-8">
 
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-hack-border pb-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-noir-border pb-4">
         <div>
           <div class="flex items-center space-x-2">
-            <span class="text-hack-purple text-xl font-mono font-bold">//</span>
-            <h1 class="text-2xl font-mono font-bold text-white">ADMINISTRATOR CONTROL PANEL</h1>
-            <span class="px-2 py-0.5 rounded bg-hack-purple/20 text-hack-purple border border-hack-purple/40 text-xs font-mono">SIMULATED BACKEND</span>
+            <h1 class="text-xl font-mono font-bold text-cream-100">OPERATOR ADMIN PANEL</h1>
+            <span class="px-2 py-0.5 rounded bg-noir-surface text-cream-muted border border-noir-border text-[10px] font-mono">LOCAL BACKEND</span>
           </div>
-          <p class="text-xs text-hack-muted font-mono mt-1">Review candidate applications, approve memberships, and generate unique single-use pass keys.</p>
+          <p class="text-xs text-cream-muted font-mono mt-1">Review candidate applications, approve accounts, and generate single-use pass keys.</p>
         </div>
 
-        <div class="flex items-center space-x-3">
-          <button onclick="resetToSampleData()" class="px-3 py-1.5 bg-hack-dark hover:bg-hack-border border border-hack-border text-xs font-mono text-hack-yellow rounded transition">
-            ♻️ Reset Sample Data
+        <div class="flex items-center space-x-2 font-mono text-xs">
+          <button onclick="resetToSampleData()" class="px-3 py-1.5 bg-noir-surface border border-noir-border text-cream-muted hover:text-cream-100 rounded transition">
+            ♻️ Reset Samples
           </button>
-          <button onclick="clearAllData()" class="px-3 py-1.5 bg-hack-dark hover:bg-red-950/60 border border-hack-red/40 text-xs font-mono text-hack-red rounded transition">
+          <button onclick="clearAllData()" class="px-3 py-1.5 bg-noir-surface border border-noir-border text-cream-muted hover:text-accent-red rounded transition">
             🗑️ Clear LocalStorage
           </button>
         </div>
@@ -591,54 +511,49 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       <!-- Application Queue Section -->
       <div class="space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
-          <h2 class="text-lg font-mono font-bold text-white flex items-center gap-2">
-            <span>📋 SUBMITTED APPLICATIONS QUEUE</span>
-            <span id="app-count-badge" class="px-2 py-0.5 text-xs bg-hack-dark border border-hack-border text-hack-cyan rounded-full font-mono">0</span>
+          <h2 class="text-sm font-mono font-bold text-cream-100 flex items-center gap-2">
+            <span>SUBMITTED APPLICATIONS QUEUE</span>
+            <span id="app-count-badge" class="px-2 py-0.5 text-[10px] bg-noir-surface border border-noir-border text-cream-muted rounded-full">0</span>
           </h2>
 
-          <!-- Filter Switcher -->
-          <div class="flex items-center space-x-1 bg-hack-dark border border-hack-border p-1 rounded-lg text-xs font-mono">
-            <button onclick="filterApps('all')" id="filter-all" class="app-filter-btn active px-3 py-1 rounded bg-hack-border text-white">All</button>
-            <button onclick="filterApps('pending')" id="filter-pending" class="app-filter-btn px-3 py-1 rounded text-hack-muted hover:text-white">Pending</button>
-            <button onclick="filterApps('approved')" id="filter-approved" class="app-filter-btn px-3 py-1 rounded text-hack-muted hover:text-white">Approved</button>
-            <button onclick="filterApps('rejected')" id="filter-rejected" class="app-filter-btn px-3 py-1 rounded text-hack-muted hover:text-white">Rejected</button>
+          <div class="flex items-center space-x-1 bg-noir-surface border border-noir-border p-1 rounded text-xs font-mono">
+            <button onclick="filterApps('all')" id="filter-all" class="app-filter-btn active px-2.5 py-1 rounded bg-noir-border text-cream-100">All</button>
+            <button onclick="filterApps('pending')" id="filter-pending" class="app-filter-btn px-2.5 py-1 rounded text-cream-muted hover:text-cream-100">Pending</button>
+            <button onclick="filterApps('approved')" id="filter-approved" class="app-filter-btn px-2.5 py-1 rounded text-cream-muted hover:text-cream-100">Approved</button>
+            <button onclick="filterApps('rejected')" id="filter-rejected" class="app-filter-btn px-2.5 py-1 rounded text-cream-muted hover:text-cream-100">Rejected</button>
           </div>
         </div>
 
-        <!-- Application Cards Container -->
         <div id="applications-list" class="grid grid-cols-1 gap-4">
-          <!-- Dynamically populated via JS -->
+          <!-- Dynamically populated -->
         </div>
       </div>
 
-      <!-- Key Manager Suite Section -->
-      <div class="glass-card p-6 border-hack-border space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-hack-border/60 pb-4">
+      <!-- Key Vault Section -->
+      <div class="glass-card p-6 border-noir-border space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-noir-border pb-3">
           <div>
-            <h2 class="text-lg font-mono font-bold text-white flex items-center gap-2">
-              <span class="text-hack-cyan">🔑</span> APPLICATION PASSKEY VAULT
-            </h2>
-            <p class="text-xs text-hack-muted font-mono">Single-use authentication tokens generated for approved applicants.</p>
+            <h2 class="text-sm font-mono font-bold text-cream-100">PASSKEY VAULT</h2>
+            <p class="text-xs text-cream-muted font-mono">Single-use authentication tokens generated for approved applicants.</p>
           </div>
-
-          <button onclick="generateCustomKeyModal()" class="px-4 py-2 bg-hack-purple/20 hover:bg-hack-purple/30 text-hack-purple border border-hack-purple/50 text-xs font-mono font-semibold rounded-lg transition flex items-center space-x-1.5">
-            <span>+ Generate Manual Passkey</span>
+          <button onclick="generateCustomKeyModal()" class="px-3 py-1.5 bg-noir-surface border border-noir-border hover:border-cream-muted text-cream-100 text-xs font-mono rounded transition">
+            + Generate Manual Key
           </button>
         </div>
 
         <div class="overflow-x-auto">
           <table class="w-full text-left font-mono text-xs">
-            <thead class="bg-hack-black/80 text-hack-muted border-b border-hack-border">
+            <thead class="bg-noir-bg text-cream-dim border-b border-noir-border">
               <tr>
-                <th class="p-3">PASS KEY</th>
-                <th class="p-3">ASSIGNED APPLICANT</th>
-                <th class="p-3">CREATED AT</th>
-                <th class="p-3">STATUS</th>
-                <th class="p-3 text-right">ACTION</th>
+                <th class="p-2.5">PASS KEY</th>
+                <th class="p-2.5">APPLICANT</th>
+                <th class="p-2.5">CREATED AT</th>
+                <th class="p-2.5">STATUS</th>
+                <th class="p-2.5 text-right">ACTION</th>
               </tr>
             </thead>
-            <tbody id="keys-table-body" class="divide-y divide-hack-border/40">
-              <!-- Dynamically populated via JS -->
+            <tbody id="keys-table-body" class="divide-y divide-noir-border">
+              <!-- Dynamically populated -->
             </tbody>
           </table>
         </div>
@@ -649,128 +564,119 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     <!-- ==================== VIEW 4: MEMBER HUB WORKSPACE ==================== -->
     <section id="view-member" class="hidden space-y-6">
 
-      <!-- GATED LOGIN SCREEN (If not authenticated) -->
-      <div id="member-login-gate" class="max-w-md mx-auto my-12 glass-card p-8 border-hack-green/30 text-center space-y-6 scanlines relative">
-        <div class="w-16 h-16 mx-auto rounded-full bg-hack-green/10 border border-hack-green/40 flex items-center justify-center text-hack-green text-3xl font-mono shadow-glow-green">
-          ⚡
-        </div>
-
+      <!-- GATED LOGIN SCREEN -->
+      <div id="member-login-gate" class="max-w-md mx-auto my-12 glass-card p-8 border-noir-border text-center space-y-6">
         <div>
-          <h2 class="text-2xl font-mono font-bold text-white tracking-wide">AUTHENTICATION GATE</h2>
-          <p class="text-xs text-hack-muted font-mono mt-1">Single-Use Application Pass Key Required</p>
+          <h2 class="text-xl font-mono font-bold text-cream-100 tracking-wide">AUTHENTICATION GATE</h2>
+          <p class="text-xs text-cream-muted font-mono mt-1">Single-Use Pass Key Required</p>
         </div>
 
-        <div class="space-y-3 text-left">
-          <label for="passkey-input" class="block font-mono text-xs text-hack-green font-semibold">
+        <div class="space-y-3 text-left font-mono text-xs">
+          <label for="passkey-input" class="block text-cream-muted font-semibold">
             ENTER APPLICATION PASS KEY:
           </label>
           <input type="text" id="passkey-input" placeholder="e.g. ETH-8X2F-90KA-11M4"
-            class="w-full bg-hack-black border border-hack-border focus:border-hack-green focus:ring-1 focus:ring-hack-green rounded-lg px-4 py-3 font-mono text-center text-hack-cyan font-bold tracking-widest outline-none uppercase transition">
-          <p class="text-[11px] text-hack-muted font-mono">
-            * Keys are single-use only (`is_used: true` on entry). Once used, future logins with the same key will be rejected.
+            class="w-full bg-noir-bg border border-noir-border focus:border-cream-muted rounded px-4 py-3 font-mono text-center text-cream-100 font-bold tracking-widest outline-none uppercase transition">
+          <p class="text-[11px] text-cream-dim">
+            * Keys are single-use (`is_used: true` on entry). Once authenticated, key is invalidated for future reuse.
           </p>
         </div>
 
-        <div id="login-error-msg" class="hidden p-3 bg-red-950/60 border border-hack-red/50 text-hack-red font-mono text-xs rounded-lg text-left">
-          <!-- Error message output -->
+        <div id="login-error-msg" class="hidden p-3 bg-noir-bg border border-accent-red/40 text-accent-red font-mono text-xs rounded text-left">
+          <!-- Error output -->
         </div>
 
-        <button onclick="attemptPasskeyLogin()" class="w-full py-3 bg-hack-green hover:bg-emerald-400 text-black font-mono font-bold text-sm rounded-lg shadow-glow-green transition">
+        <button onclick="attemptPasskeyLogin()" class="w-full py-3 bg-cream-100 hover:bg-cream-200 text-noir-bg font-mono font-bold text-xs rounded transition">
           AUTHENTICATE & ENTER WORKSPACE
         </button>
 
-        <div class="pt-2 border-t border-hack-border/60 text-[11px] font-mono text-hack-muted flex justify-between">
-          <span>Need a passkey?</span>
-          <button onclick="switchView('apply')" class="text-hack-cyan hover:underline">Apply Here &rarr;</button>
+        <div class="pt-2 border-t border-noir-border text-[11px] font-mono text-cream-muted flex justify-between">
+          <span>Need a key?</span>
+          <button onclick="switchView('apply')" class="text-cream-100 hover:underline">Apply Here &rarr;</button>
         </div>
       </div>
 
-      <!-- AUTHENTICATED WORKSPACE (If authenticated) -->
+      <!-- AUTHENTICATED WORKSPACE -->
       <div id="member-workspace" class="hidden space-y-6">
 
         <!-- Workspace Header Banner -->
-        <div class="glass-card p-4 sm:p-6 border-hack-green/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="flex items-center space-x-4">
-            <div class="w-12 h-12 rounded-lg bg-hack-green/10 border border-hack-green/40 flex items-center justify-center text-hack-green font-mono text-xl">
-              ☠️
+        <div class="glass-card p-4 sm:p-6 border-noir-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded bg-noir-surface border border-noir-border flex items-center justify-center text-cream-100 font-mono font-bold text-sm">
+              ⚡
             </div>
             <div>
               <div class="flex items-center space-x-2">
-                <span class="font-mono font-bold text-lg text-white" id="member-alias-display">AGENT_GUEST</span>
-                <span class="text-[10px] font-mono bg-hack-green/20 text-hack-green border border-hack-green/40 px-2 py-0.5 rounded">AUTHENTICATED</span>
+                <span class="font-mono font-bold text-base text-cream-100" id="member-alias-display">AGENT_MEMBER</span>
+                <span class="text-[10px] font-mono bg-noir-surface text-accent-green border border-noir-border px-2 py-0.5 rounded">AUTHENTICATED</span>
               </div>
-              <p class="text-xs text-hack-muted font-mono mt-0.5">
-                Passkey Used: <span id="member-key-display" class="text-hack-cyan">ETH-****-****</span> | Node: <span class="text-hack-green">SEC-NODE-09 (LATENCY: 12ms)</span>
+              <p class="text-xs text-cream-muted font-mono mt-0.5">
+                Passkey Used: <span id="member-key-display" class="text-cream-100">ETH-****-****</span> | Node: <span class="text-cream-muted">SEC-NODE-09 (12ms)</span>
               </p>
             </div>
           </div>
 
-          <button onclick="logoutMember()" class="px-4 py-2 bg-hack-dark hover:bg-red-950/50 border border-hack-border hover:border-hack-red/50 text-hack-muted hover:text-hack-red text-xs font-mono rounded-lg transition">
+          <button onclick="logoutMember()" class="px-3.5 py-1.5 bg-noir-surface hover:bg-noir-border border border-noir-border text-cream-muted hover:text-accent-red text-xs font-mono rounded transition">
             🔒 Disconnect Session
           </button>
         </div>
 
-        <!-- Main Workspace Interface Grid -->
+        <!-- Workspace Interface Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-          <!-- CHAT & CHANNELS WORKSPACE (LG: 8 Cols) -->
-          <div class="lg:col-span-8 space-y-4 flex flex-col h-[650px] glass-card border-hack-border p-4">
+          <!-- CHAT & CHANNELS WORKSPACE -->
+          <div class="lg:col-span-8 space-y-4 flex flex-col h-[600px] glass-card border-noir-border p-4">
 
-            <!-- Channel Tabs Header -->
-            <div class="flex items-center justify-between border-b border-hack-border pb-3">
+            <div class="flex items-center justify-between border-b border-noir-border pb-3 font-mono text-xs">
               <div class="flex items-center space-x-2">
-                <span class="text-hack-green font-mono text-lg font-bold">#</span>
-                <span id="current-channel-title" class="font-mono font-bold text-white text-base">announcements</span>
+                <span class="text-cream-muted font-bold">#</span>
+                <span id="current-channel-title" class="font-bold text-cream-100 text-sm">announcements</span>
               </div>
-              <span class="text-xs font-mono text-hack-muted" id="current-channel-topic">Official Collective Notices & Directives</span>
+              <span class="text-cream-dim text-[11px]" id="current-channel-topic">Official Directives</span>
             </div>
 
             <!-- Channel Selector Bar -->
-            <div class="flex overflow-x-auto space-x-1 pb-2 border-b border-hack-border/40 font-mono text-xs">
-              <button onclick="switchChannel('announcements')" class="channel-btn active px-3 py-1.5 rounded bg-hack-green/10 text-hack-green border border-hack-green/30 shrink-0" data-channel="announcements">#announcements</button>
-              <button onclick="switchChannel('web-exploitation')" class="channel-btn px-3 py-1.5 rounded text-hack-muted hover:text-white shrink-0" data-channel="web-exploitation">#web-exploitation</button>
-              <button onclick="switchChannel('malware-analysis')" class="channel-btn px-3 py-1.5 rounded text-hack-muted hover:text-white shrink-0" data-channel="malware-analysis">#malware-analysis</button>
-              <button onclick="switchChannel('reverse-engineering')" class="channel-btn px-3 py-1.5 rounded text-hack-muted hover:text-white shrink-0" data-channel="reverse-engineering">#reverse-engineering</button>
-              <button onclick="switchChannel('osint')" class="channel-btn px-3 py-1.5 rounded text-hack-muted hover:text-white shrink-0" data-channel="osint">#osint</button>
-              <button onclick="switchChannel('ctf-war-room')" class="channel-btn px-3 py-1.5 rounded text-hack-muted hover:text-white shrink-0" data-channel="ctf-war-room">#ctf-war-room</button>
+            <div class="flex overflow-x-auto space-x-1 pb-2 border-b border-noir-border font-mono text-xs">
+              <button onclick="switchChannel('announcements')" class="channel-btn active px-3 py-1.5 rounded bg-noir-surface text-cream-100 border border-noir-border shrink-0" data-channel="announcements">#announcements</button>
+              <button onclick="switchChannel('web-exploitation')" class="channel-btn px-3 py-1.5 rounded text-cream-muted hover:text-cream-100 shrink-0" data-channel="web-exploitation">#web-exploitation</button>
+              <button onclick="switchChannel('malware-analysis')" class="channel-btn px-3 py-1.5 rounded text-cream-muted hover:text-cream-100 shrink-0" data-channel="malware-analysis">#malware-analysis</button>
+              <button onclick="switchChannel('reverse-engineering')" class="channel-btn px-3 py-1.5 rounded text-cream-muted hover:text-cream-100 shrink-0" data-channel="reverse-engineering">#reverse-engineering</button>
+              <button onclick="switchChannel('osint')" class="channel-btn px-3 py-1.5 rounded text-cream-muted hover:text-cream-100 shrink-0" data-channel="osint">#osint</button>
+              <button onclick="switchChannel('ctf-war-room')" class="channel-btn px-3 py-1.5 rounded text-cream-muted hover:text-cream-100 shrink-0" data-channel="ctf-war-room">#ctf-war-room</button>
             </div>
 
-            <!-- Chat Messages Scrollable Box -->
-            <div id="chat-messages-box" class="flex-1 overflow-y-auto space-y-4 pr-2 font-mono text-xs">
-              <!-- Messages rendered dynamically -->
+            <!-- Scrollable Messages -->
+            <div id="chat-messages-box" class="flex-1 overflow-y-auto space-y-3 pr-2 font-mono text-xs">
+              <!-- Messages -->
             </div>
 
-            <!-- Message Input Area -->
-            <form onsubmit="handleSendChatMessage(event)" class="pt-2 border-t border-hack-border flex gap-2">
-              <input type="text" id="chat-input-text" placeholder="Send encrypted message to #channel..."
-                class="flex-1 bg-hack-black border border-hack-border focus:border-hack-green rounded-lg px-4 py-2.5 text-xs font-mono text-white outline-none transition">
-              <button type="submit" class="px-5 py-2.5 bg-hack-green hover:bg-emerald-400 text-black font-mono font-bold text-xs rounded-lg transition">
+            <!-- Input Box -->
+            <form onsubmit="handleSendChatMessage(event)" class="pt-2 border-t border-noir-border flex gap-2">
+              <input type="text" id="chat-input-text" placeholder="Broadcast message..."
+                class="flex-1 bg-noir-bg border border-noir-border focus:border-cream-muted rounded px-3.5 py-2 text-xs font-mono text-cream-100 outline-none transition">
+              <button type="submit" class="px-4 py-2 bg-cream-100 hover:bg-cream-200 text-noir-bg font-mono font-bold text-xs rounded transition">
                 SEND
               </button>
             </form>
 
           </div>
 
-          <!-- INTERACTIVE TERMINAL (LG: 4 Cols) -->
-          <div class="lg:col-span-4 glass-card border-hack-border p-4 flex flex-col h-[650px]">
-            <div class="flex items-center justify-between border-b border-hack-border pb-2 mb-3">
-              <div class="flex items-center space-x-2 font-mono text-xs text-hack-cyan font-bold">
-                <span>💻 MEMBER TERMINAL</span>
-              </div>
-              <span class="text-[10px] font-mono text-hack-muted">TYPE 'help' FOR COMMANDS</span>
+          <!-- INTERACTIVE TERMINAL -->
+          <div class="lg:col-span-4 glass-card border-noir-border p-4 flex flex-col h-[600px]">
+            <div class="flex items-center justify-between border-b border-noir-border pb-2 mb-3 font-mono text-xs">
+              <span class="text-cream-100 font-bold">CLI TERMINAL</span>
+              <span class="text-[10px] text-cream-dim">TYPE 'help'</span>
             </div>
 
-            <!-- Terminal Output -->
-            <div id="interactive-term-output" class="flex-1 overflow-y-auto font-mono text-[11px] space-y-2 pr-1 text-hack-text leading-relaxed">
-              <div class="text-hack-muted">AetherSec Cyber Terminal v2.4 initialized.</div>
-              <div class="text-hack-green">Type 'help' to display list of available network commands.</div>
+            <div id="interactive-term-output" class="flex-1 overflow-y-auto font-mono text-[11px] space-y-1.5 pr-1 text-cream-muted leading-relaxed">
+              <div class="text-cream-dim">AetherSec Cyber Terminal v2.4 initialized.</div>
+              <div class="text-cream-100">Type 'help' for commands.</div>
             </div>
 
-            <!-- Terminal Input Line -->
-            <form onsubmit="handleTerminalCommand(event)" class="pt-3 border-t border-hack-border flex items-center space-x-2 font-mono text-xs">
-              <span class="text-hack-green font-bold">&gt;</span>
+            <form onsubmit="handleTerminalCommand(event)" class="pt-2.5 border-t border-noir-border flex items-center space-x-2 font-mono text-xs">
+              <span class="text-cream-100 font-bold">&gt;</span>
               <input type="text" id="interactive-term-input" placeholder="Type command..."
-                class="flex-1 bg-transparent text-hack-cyan outline-none font-mono text-xs placeholder-hack-muted">
+                class="flex-1 bg-transparent text-cream-100 outline-none font-mono text-xs placeholder-cream-dim">
             </form>
           </div>
 
@@ -783,37 +689,39 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
   </main>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="mt-auto border-t border-hack-border/60 bg-hack-black/90 py-6 px-4 font-mono text-xs text-hack-muted">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center space-x-2">
-        <span class="text-hack-cyan font-bold">AETHER_SEC</span>
-        <span>&copy; 2025 ELITE ETHICAL HACKING COLLECTIVE</span>
+  <footer class="mt-auto border-t border-noir-border bg-noir-bg py-6 px-4 font-mono text-xs text-cream-dim">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <span class="text-cream-muted font-bold">AETHER_SEC</span>
+        <span>&copy; 2025 ALL RIGHTS RESERVED</span>
       </div>
       <div class="flex items-center space-x-4">
-        <span>ENCRYPTED END-TO-END</span>
+        <!-- Secret Discreet Admin Access Point in Footer -->
+        <button onclick="switchView('admin')" class="text-cream-dim hover:text-cream-muted transition flex items-center gap-1">
+          <span>⚙ Operator Admin Suite</span>
+        </button>
         <span>•</span>
-        <span class="text-hack-green">PGP KEY: 0x4F92B810</span>
+        <span>PGP: 0x4F92B810</span>
       </div>
     </div>
   </footer>
 
   <!-- ==================== MODALS ==================== -->
 
-  <!-- Generic Information / Application Confirmation Modal -->
   <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-card max-w-lg w-full p-6 border-hack-cyan/40 space-y-5 scanlines relative animate-fade-in">
-      <div class="flex items-center justify-between border-b border-hack-border/60 pb-3">
-        <h3 id="modal-title" class="font-mono font-bold text-lg text-white">MODAL TITLE</h3>
-        <button onclick="closeModal()" class="text-hack-muted hover:text-white font-mono text-lg">&times;</button>
+    <div class="glass-card max-w-md w-full p-6 border-noir-border space-y-4">
+      <div class="flex items-center justify-between border-b border-noir-border pb-3 font-mono">
+        <h3 id="modal-title" class="font-bold text-sm text-cream-100">MODAL TITLE</h3>
+        <button onclick="closeModal()" class="text-cream-dim hover:text-cream-100 text-base">&times;</button>
       </div>
 
-      <div id="modal-body" class="font-mono text-xs text-hack-text space-y-3">
-        <!-- Dynamic content -->
+      <div id="modal-body" class="font-mono text-xs text-cream-muted space-y-2">
+        <!-- Body -->
       </div>
 
-      <div class="flex justify-end pt-2">
-        <button onclick="closeModal()" class="px-5 py-2 bg-hack-cyan hover:bg-cyan-400 text-black font-mono font-bold text-xs rounded transition">
-          CLOSE / ACKNOWLEDGE
+      <div class="flex justify-end pt-2 font-mono text-xs">
+        <button onclick="closeModal()" class="px-4 py-1.5 bg-cream-100 text-noir-bg font-bold rounded transition">
+          CLOSE
         </button>
       </div>
     </div>
@@ -823,7 +731,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
   <!-- ==================== JAVASCRIPT LOGIC ==================== -->
   <script>
     /* ==========================================================================
-       1. INITIALIZATION & STATE MANAGEMENT IN LOCALSTORAGE
+       STATE MANAGEMENT IN LOCALSTORAGE
        ========================================================================== */
 
     const STORAGE_KEYS = {
@@ -833,7 +741,6 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       CURRENT_SESSION: 'aether_sec_active_session'
     };
 
-    // Initial default seed data if localStorage is empty
     const DEFAULT_APPLICATIONS = [
       {
         id: 'APP-1001',
@@ -841,7 +748,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
         contact: 'cipherghost@proton.me',
         domain: 'Web Exploitation',
         portfolio: 'https://github.com/cipherghost-sec',
-        bio: 'Discovered GraphQL desync vulnerability in major financial platform. Experienced in automated AST parsing & HTTP smuggling.',
+        bio: 'Discovered GraphQL desync vulnerability in major financial platform. Experienced in AST parsing & HTTP smuggling.',
         status: 'approved',
         submittedAt: '2025-01-10 14:22'
       },
@@ -861,7 +768,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
         contact: 'bytesurgeon@reversing.lab',
         domain: 'Reverse Engineering',
         portfolio: 'https://github.com/bytesurgeon',
-        bio: 'Authored Ghidra decompilation plugin for ARM64 firmware analysis. Reversed multiple state-sponsored loader binaries.',
+        bio: 'Authored Ghidra decompilation plugin for ARM64 firmware analysis.',
         status: 'pending',
         submittedAt: '2025-01-15 11:40'
       }
@@ -952,7 +859,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     }
 
     /* ==========================================================================
-       2. VIEW SWITCHING LOGIC
+       VIEW SWITCHING LOGIC
        ========================================================================== */
 
     let currentChannel = 'announcements';
@@ -966,12 +873,16 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
 
         if (v === viewName) {
           viewEl.classList.remove('hidden');
-          navBtn.classList.add('text-hack-cyan', 'bg-hack-border/40', 'font-semibold');
-          navBtn.classList.remove('text-hack-muted');
+          if (navBtn) {
+            navBtn.classList.add('text-cream-100', 'bg-noir-border', 'font-medium');
+            navBtn.classList.remove('text-cream-muted');
+          }
         } else {
           viewEl.classList.add('hidden');
-          navBtn.classList.remove('text-hack-cyan', 'bg-hack-border/40', 'font-semibold');
-          navBtn.classList.add('text-hack-muted');
+          if (navBtn) {
+            navBtn.classList.remove('text-cream-100', 'bg-noir-border', 'font-medium');
+            navBtn.classList.add('text-cream-muted');
+          }
         }
       });
 
@@ -986,67 +897,67 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     }
 
     /* ==========================================================================
-       3. PUBLIC INFO & RESEARCH DOMAINS
+       RESEARCH DOMAIN MODALS & UTILS
        ========================================================================== */
 
     const RESEARCH_DOMAIN_DETAILS = {
       'web': {
-        title: '🌐 Web Exploitation & Protocol Desync',
+        title: '🌐 Web Exploitation',
         body: `
-          <p class="mb-2">Our web research division focuses on non-standard vulnerability chains targeting modern cloud architectures:</p>
-          <ul class="list-disc pl-5 space-y-1 text-hack-cyan">
-            <li>HTTP/2 & HTTP/3 Request Smuggling and Multiplexing Desync</li>
-            <li>GraphQL Query Depth Recursion & Field Duplication Attacks</li>
-            <li>OAuth 2.0 State Injection and Subdomain Takeover Chaining</li>
-            <li>Server-Side Request Forgery (SSRF) into AWS EC2 Metadata IMDSv2</li>
+          <p class="mb-2">Advanced vulnerability research targeting cloud architectures:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>HTTP/2 & HTTP/3 Request Smuggling</li>
+            <li>GraphQL Query Recursion & Depth Exhaustion</li>
+            <li>OAuth 2.0 State Injection</li>
+            <li>SSRF into AWS EC2 Metadata IMDSv2</li>
           </ul>
         `
       },
       'malware': {
-        title: '🦠 Malware Analysis & Ransomware Reverse Engine',
+        title: '🦠 Malware Analysis',
         body: `
-          <p class="mb-2">Dissecting advanced persistent threat (APT) payloads in isolated sandboxes:</p>
-          <ul class="list-disc pl-5 space-y-1 text-hack-green">
-            <li>Memory forensics using Volatility 3 and Process Hacker</li>
-            <li>Custom YARA rule generation for signature-less detection</li>
-            <li>Ransomware cryptographic key recovery & cipher flaw analysis</li>
-            <li>Kernel-mode driver exploitation and rootkit hooking mechanisms</li>
+          <p class="mb-2">APT payload analysis in isolated sandboxes:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Memory forensics with Volatility 3</li>
+            <li>YARA signature authoring</li>
+            <li>Ransomware cryptographic key recovery</li>
+            <li>Kernel-mode driver exploitation</li>
           </ul>
         `
       },
       'reversing': {
-        title: '⚙️ Binary Reversing & Firmware Decompilation',
+        title: '⚙️ Reverse Engineering',
         body: `
-          <p class="mb-2">Static & dynamic binary decompression and protocol analysis:</p>
-          <ul class="list-disc pl-5 space-y-1 text-hack-purple">
-            <li>Ghidra headless batch decompilation scripts</li>
-            <li>IDA Pro anti-anti-debugging techniques and TLS callback analysis</li>
-            <li>ARM64 and MIPS hardware router firmware extraction</li>
-            <li>Proprietary network protocol re-engineering</li>
+          <p class="mb-2">Static & dynamic binary decompilation:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Ghidra headless batch decompilation</li>
+            <li>IDA Pro anti-debugging bypasses</li>
+            <li>ARM64 & MIPS router firmware extraction</li>
+            <li>Proprietary protocol re-engineering</li>
           </ul>
         `
       },
       'osint': {
-        title: '🔍 OSINT & Geolocation Reconnaissance',
+        title: '🔍 OSINT & Reconnaissance',
         body: `
-          <p class="mb-2">Automated intelligence gathering across surface and dark web assets:</p>
-          <ul class="list-disc pl-5 space-y-1 text-yellow-400">
-            <li>Passive DNS correlation and ASN map expansion</li>
-            <li>GEOINT satellite imagery and metadata extraction</li>
-            <li>Exposed API key scanning across public code commits</li>
-            <li>Darknet forum threat actor pseudonym tracking</li>
+          <p class="mb-2">Automated threat intelligence mapping:</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Passive DNS correlation and ASN expansion</li>
+            <li>GEOINT satellite metadata extraction</li>
+            <li>Exposed commit credential scanning</li>
+            <li>Darknet actor pseudonym correlation</li>
           </ul>
         `
       },
       'binary': {
-        title: '💣 Binary Exploitation & CTF War Room',
+        title: '💣 Binary Exploitation',
         body: `
           <p class="mb-2">Low-level memory corruption exploit development:</p>
-          <ul class="list-disc pl-5 space-y-1 text-hack-red">
-            <li>Glibc Heap exploitation: Tcache poisoning, House of Force</li>
-            <li>ROP & JOP chain synthesis with automated gadget locators</li>
-            <li>Linux kernel eBPF and tty_struct heap spray techniques</li>
-            <li>Competitive CTF attack/defense infrastructure</li>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>Glibc Heap exploitation (Tcache poisoning)</li>
+            <li>ROP & JOP chain synthesis</li>
+            <li>Linux kernel eBPF heap spray</li>
+            <li>Competitive CTF attack/defense</li>
           </ul>
         `
       }
@@ -1062,17 +973,15 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     function copySnippet(btn, code) {
       navigator.clipboard.writeText(code).then(() => {
         const originalText = btn.innerText;
-        btn.innerText = 'Copied!';
-        btn.classList.add('text-hack-green');
+        btn.innerText = 'Copied';
         setTimeout(() => {
           btn.innerText = originalText;
-          btn.classList.remove('text-hack-green');
         }, 2000);
       });
     }
 
     /* ==========================================================================
-       4. MEMBERSHIP APPLICATION FORM
+       MEMBERSHIP APPLICATION FORM
        ========================================================================== */
 
     function verifyChallenge() {
@@ -1081,11 +990,11 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       feedback.classList.remove('hidden');
 
       if (input === 'AETHER_COLLECTIVE_2025') {
-        feedback.className = 'text-[11px] font-mono text-hack-green mt-1';
-        feedback.innerText = '✓ Challenge Verified! "Vetted Researcher" flag attached to submission.';
+        feedback.className = 'text-[11px] font-mono text-accent-green mt-1';
+        feedback.innerText = '✓ Verification successful.';
       } else {
-        feedback.className = 'text-[11px] font-mono text-hack-red mt-1';
-        feedback.innerText = '✕ Incorrect flag. Tip: Base64 decode string QVVUSEVSX0NPTExFQ1RJVkVfMjAyNQ==';
+        feedback.className = 'text-[11px] font-mono text-accent-red mt-1';
+        feedback.innerText = '✕ Incorrect. Decode string QVVUSEVSX0NPTExFQ1RJVkVfMjAyNQ==';
       }
     }
 
@@ -1116,39 +1025,34 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       apps.unshift(newApp);
       saveApplications(apps);
 
-      // Reset Form
       document.getElementById('application-form').reset();
       document.getElementById('challenge-feedback').classList.add('hidden');
 
-      // Confirmation Modal
       showModal(
-        'STATUS: APPLICATION RECEIVED',
+        'APPLICATION SUBMITTED',
         `
-          <div class="space-y-3">
-            <div class="p-3 bg-hack-green/10 border border-hack-green/30 text-hack-green rounded font-mono text-xs">
-              <strong>[+] Application Enqueued:</strong> ${newId}
-            </div>
-            <p>Thank you, <span class="text-hack-cyan font-bold">${handle}</span>. Your application for <strong class="text-white">${domain}</strong> has been saved to the screening queue.</p>
-            <p class="text-hack-muted">Once reviewed by administrators in the <strong>Admin Suite</strong>, an <strong>Application Pass Key</strong> (e.g. <code>ETH-XXXX-XXXX-XXXX</code>) will be generated for your entry into the Member Hub Workspace.</p>
+          <div class="space-y-2">
+            <p>Application <strong class="text-cream-100">${newId}</strong> received for <strong class="text-cream-100">${handle}</strong>.</p>
+            <p class="text-cream-dim">Once reviewed by operators in the Admin Suite, a single-use <strong>Pass Key</strong> (e.g. <code>ETH-XXXX-XXXX-XXXX</code>) will be issued.</p>
           </div>
         `
       );
     }
 
     /* ==========================================================================
-       5. ADMIN APPROVAL & PASSKEY GENERATION SUITE
+       ADMIN APPROVAL & PASSKEY GENERATION
        ========================================================================== */
 
     function filterApps(status) {
       currentFilter = status;
       document.querySelectorAll('.app-filter-btn').forEach(btn => {
-        btn.classList.remove('bg-hack-border', 'text-white');
-        btn.classList.add('text-hack-muted');
+        btn.classList.remove('bg-noir-border', 'text-cream-100');
+        btn.classList.add('text-cream-muted');
       });
       const activeBtn = document.getElementById(`filter-${status}`);
       if (activeBtn) {
-        activeBtn.classList.add('bg-hack-border', 'text-white');
-        activeBtn.classList.remove('text-hack-muted');
+        activeBtn.classList.add('bg-noir-border', 'text-cream-100');
+        activeBtn.classList.remove('text-cream-muted');
       }
       renderAdminApplications();
     }
@@ -1167,8 +1071,8 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div class="glass-card p-8 text-center font-mono text-xs text-hack-muted">
-            No applications found matching status filter: [${currentFilter.toUpperCase()}]
+          <div class="glass-card p-6 text-center font-mono text-xs text-cream-dim">
+            No applications matching status filter: [${currentFilter.toUpperCase()}]
           </div>
         `;
         return;
@@ -1177,45 +1081,45 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       container.innerHTML = filtered.map(app => {
         let statusBadge = '';
         if (app.status === 'pending') {
-          statusBadge = `<span class="px-2.5 py-1 rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 text-[10px] font-mono">PENDING REVIEW</span>`;
+          statusBadge = `<span class="px-2 py-0.5 rounded bg-noir-surface text-cream-muted border border-noir-border text-[10px] font-mono">PENDING</span>`;
         } else if (app.status === 'approved') {
-          statusBadge = `<span class="px-2.5 py-1 rounded bg-hack-green/10 text-hack-green border border-hack-green/30 text-[10px] font-mono">APPROVED</span>`;
+          statusBadge = `<span class="px-2 py-0.5 rounded bg-noir-surface text-accent-green border border-noir-border text-[10px] font-mono">APPROVED</span>`;
         } else {
-          statusBadge = `<span class="px-2.5 py-1 rounded bg-hack-red/10 text-hack-red border border-hack-red/30 text-[10px] font-mono">REJECTED</span>`;
+          statusBadge = `<span class="px-2 py-0.5 rounded bg-noir-surface text-accent-red border border-noir-border text-[10px] font-mono">REJECTED</span>`;
         }
 
         return `
-          <div class="glass-card p-5 border-hack-border space-y-3 font-mono text-xs">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-hack-border/40 pb-3">
-              <div class="flex items-center space-x-3">
-                <span class="font-bold text-white text-sm">${app.handle}</span>
-                <span class="text-hack-muted text-[10px]">(${app.id})</span>
+          <div class="glass-card p-4 space-y-3 font-mono text-xs">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-noir-border pb-2">
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-cream-100">${app.handle}</span>
+                <span class="text-cream-dim text-[10px]">(${app.id})</span>
                 ${statusBadge}
               </div>
-              <span class="text-hack-muted text-[10px]">Submitted: ${app.submittedAt}</span>
+              <span class="text-cream-dim text-[10px]">Submitted: ${app.submittedAt}</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-hack-muted text-[11px]">
-              <div><strong>Domain:</strong> <span class="text-hack-cyan">${app.domain}</span></div>
-              <div><strong>Contact:</strong> <span class="text-white">${app.contact}</span></div>
-              <div class="sm:col-span-2 truncate"><strong>Portfolio:</strong> <a href="${app.portfolio}" target="_blank" class="text-hack-cyan underline">${app.portfolio}</a></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-cream-muted text-[11px]">
+              <div><strong>Domain:</strong> ${app.domain}</div>
+              <div><strong>Contact:</strong> ${app.contact}</div>
+              <div class="sm:col-span-2 truncate"><strong>Portfolio:</strong> <a href="${app.portfolio}" target="_blank" class="text-cream-100 underline">${app.portfolio}</a></div>
             </div>
 
-            <div class="bg-hack-black/70 p-3 rounded border border-hack-border/60 text-hack-text leading-relaxed">
-              <strong>Proof of Work / Bio:</strong> ${app.bio}
+            <div class="bg-noir-bg p-2.5 rounded border border-noir-border text-cream-muted">
+              ${app.bio}
             </div>
 
-            <div class="flex flex-wrap items-center justify-end gap-2 pt-2">
+            <div class="flex flex-wrap items-center justify-end gap-2 pt-1">
               ${app.status === 'pending' ? `
-                <button onclick="approveApplication('${app.id}')" class="px-3 py-1.5 bg-hack-green/20 hover:bg-hack-green/30 text-hack-green border border-hack-green/40 rounded text-xs font-bold transition flex items-center gap-1">
-                  <span>✓ Approve & Generate Key</span>
+                <button onclick="approveApplication('${app.id}')" class="px-3 py-1 bg-cream-100 text-noir-bg font-bold rounded text-xs transition">
+                  ✓ Approve & Generate Key
                 </button>
-                <button onclick="rejectApplication('${app.id}')" class="px-3 py-1.5 bg-hack-red/20 hover:bg-hack-red/30 text-hack-red border border-hack-red/40 rounded text-xs transition">
+                <button onclick="rejectApplication('${app.id}')" class="px-2.5 py-1 bg-noir-surface hover:bg-noir-border text-accent-red rounded text-xs transition">
                   ✕ Reject
                 </button>
               ` : ''}
-              <button onclick="deleteApplication('${app.id}')" class="px-2.5 py-1.5 bg-hack-dark hover:bg-hack-border text-hack-muted hover:text-hack-red rounded text-xs transition">
-                🗑 Delete
+              <button onclick="deleteApplication('${app.id}')" class="px-2 py-1 bg-noir-surface text-cream-dim hover:text-accent-red rounded text-xs transition">
+                Delete
               </button>
             </div>
           </div>
@@ -1231,7 +1135,6 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       app.status = 'approved';
       saveApplications(apps);
 
-      // Generate unique single-use pass key
       const passkey = generatePasskeyString();
       const keys = getPasskeys();
       const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
@@ -1251,17 +1154,17 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       renderAdminKeys();
 
       showModal(
-        'APPLICATION APPROVED & PASSKEY ISSUED',
+        'APPLICATION APPROVED',
         `
-          <div class="space-y-4">
-            <p>Application <strong class="text-white">${app.id}</strong> (${app.handle}) approved!</p>
-            <div class="bg-hack-black p-4 rounded border border-hack-cyan text-center space-y-2">
-              <span class="text-[10px] text-hack-muted block">UNIQUE SINGLE-USE PASS KEY</span>
-              <div class="text-lg font-bold text-hack-cyan tracking-widest selection:bg-hack-cyan selection:text-black">${passkey}</div>
+          <div class="space-y-3">
+            <p>Application <strong class="text-cream-100">${app.id}</strong> approved!</p>
+            <div class="bg-noir-bg p-3 rounded border border-noir-border text-center space-y-1">
+              <span class="text-[10px] text-cream-dim block">SINGLE-USE PASSKEY</span>
+              <div class="text-base font-bold text-cream-100 tracking-widest">${passkey}</div>
             </div>
             <div class="flex justify-center">
-              <button onclick="copySnippet(this, '${passkey}')" class="px-4 py-2 bg-hack-dark border border-hack-cyan text-hack-cyan hover:bg-hack-cyan hover:text-black text-xs font-mono font-bold rounded transition">
-                Copy Pass Key to Clipboard
+              <button onclick="copySnippet(this, '${passkey}')" class="px-3 py-1.5 bg-noir-surface border border-noir-border text-cream-100 rounded text-xs">
+                Copy Key
               </button>
             </div>
           </div>
@@ -1318,10 +1221,10 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       showModal(
         'MANUAL PASSKEY GENERATED',
         `
-          <div class="space-y-3">
-            <p class="text-xs text-hack-muted">Generated manual single-use invitation key:</p>
-            <div class="bg-hack-black p-4 rounded border border-hack-purple text-center">
-              <div class="text-lg font-bold text-hack-purple tracking-widest">${passkey}</div>
+          <div class="space-y-2">
+            <p class="text-xs text-cream-dim">Single-use manual invitation key:</p>
+            <div class="bg-noir-bg p-3 rounded border border-noir-border text-center">
+              <div class="text-base font-bold text-cream-100 tracking-widest">${passkey}</div>
             </div>
           </div>
         `
@@ -1333,24 +1236,24 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       const tbody = document.getElementById('keys-table-body');
 
       if (keys.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-hack-muted">No passkeys stored in database.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" class="p-3 text-center text-cream-dim">No passkeys stored.</td></tr>`;
         return;
       }
 
       tbody.innerHTML = keys.map(k => {
         const isUsed = k.is_used;
         const statusBadge = isUsed
-          ? `<span class="px-2 py-0.5 rounded bg-hack-red/10 text-hack-red border border-hack-red/30 text-[10px]">USED (EXPIRED)</span>`
-          : `<span class="px-2 py-0.5 rounded bg-hack-green/10 text-hack-green border border-hack-green/30 text-[10px]">UNUSED (ACTIVE)</span>`;
+          ? `<span class="px-2 py-0.5 rounded bg-noir-surface text-accent-red border border-noir-border text-[10px]">USED</span>`
+          : `<span class="px-2 py-0.5 rounded bg-noir-surface text-accent-green border border-noir-border text-[10px]">ACTIVE</span>`;
 
         return `
-          <tr class="hover:bg-hack-black/40">
-            <td class="p-3 font-bold text-hack-cyan tracking-wider">${k.key}</td>
-            <td class="p-3 text-white">${k.applicantHandle} <span class="text-hack-muted text-[10px]">(${k.applicantId})</span></td>
-            <td class="p-3 text-hack-muted">${k.createdAt}</td>
-            <td class="p-3">${statusBadge}</td>
-            <td class="p-3 text-right">
-              <button onclick="copySnippet(this, '${k.key}')" class="px-2.5 py-1 bg-hack-dark hover:bg-hack-border text-hack-cyan rounded text-[11px] transition">
+          <tr class="hover:bg-noir-bg">
+            <td class="p-2.5 font-bold text-cream-100">${k.key}</td>
+            <td class="p-2.5 text-cream-muted">${k.applicantHandle}</td>
+            <td class="p-2.5 text-cream-dim">${k.createdAt}</td>
+            <td class="p-2.5">${statusBadge}</td>
+            <td class="p-2.5 text-right">
+              <button onclick="copySnippet(this, '${k.key}')" class="px-2 py-0.5 bg-noir-surface border border-noir-border text-cream-muted rounded text-[10px]">
                 Copy
               </button>
             </td>
@@ -1360,7 +1263,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     }
 
     /* ==========================================================================
-       6. MEMBER HUB & SINGLE-USE PASSKEY AUTHENTICATION
+       MEMBER HUB AUTHENTICATION & WORKSPACE
        ========================================================================== */
 
     function checkMemberAuthentication() {
@@ -1398,7 +1301,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       const foundKey = keys.find(k => k.key === keyInput);
 
       if (!foundKey) {
-        showLoginError('ACCESS DENIED: Pass key invalid or not found in collective database.');
+        showLoginError('ACCESS DENIED: Pass key invalid or not found.');
         return;
       }
 
@@ -1407,11 +1310,10 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
         return;
       }
 
-      // MARK KEY AS USED IMMEDIATELY (SINGLE-USE PREVENTING FUTURE REUSE)
+      // MARK KEY AS USED IMMEDIATELY (SINGLE-USE LOGIC)
       foundKey.is_used = true;
       savePasskeys(keys);
 
-      // CREATE MEMBER SESSION
       const session = {
         isAuthenticated: true,
         passkey: foundKey.key,
@@ -1420,12 +1322,9 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       };
       setActiveSession(session);
 
-      // Clear Login input
       inputEl.value = '';
-
-      // Refresh Workspace view
       checkMemberAuthentication();
-      renderAdminKeys(); // update table status in admin if viewed
+      renderAdminKeys();
     }
 
     function showLoginError(msg) {
@@ -1440,28 +1339,28 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     }
 
     /* ==========================================================================
-       7. MEMBER HUB CHAT WORKSPACE & TERMINAL
+       MEMBER WORKSPACE CHAT & CLI TERMINAL
        ========================================================================== */
 
     const CHANNEL_TOPICS = {
-      'announcements': 'Official Collective Notices & Directives',
-      'web-exploitation': 'Web Vulnerabilities, HTTP Smuggling, GraphQL & OAuth',
-      'malware-analysis': 'Reverse Engineering APTs, YARA Rules & Cryptors',
-      'reverse-engineering': 'Decompilation, Assembly & Firmware Dissection',
-      'osint': 'Open Source Intelligence & Attack Surface Recon',
-      'ctf-war-room': 'Active CTF Competitions & Flag Discussions'
+      'announcements': 'Official Directives',
+      'web-exploitation': 'HTTP Smuggling, GraphQL & OAuth',
+      'malware-analysis': 'APTs, YARA Rules & Cryptors',
+      'reverse-engineering': 'Decompilation & Assembly',
+      'osint': 'Attack Surface Recon',
+      'ctf-war-room': 'CTF Competitions'
     };
 
     function switchChannel(chanName) {
       currentChannel = chanName;
       document.getElementById('current-channel-title').innerText = chanName;
-      document.getElementById('current-channel-topic').innerText = CHANNEL_TOPICS[chanName] || 'Collective Discussion';
+      document.getElementById('current-channel-topic').innerText = CHANNEL_TOPICS[chanName] || 'Collective Channel';
 
       document.querySelectorAll('.channel-btn').forEach(btn => {
         if (btn.getAttribute('data-channel') === chanName) {
-          btn.className = 'channel-btn active px-3 py-1.5 rounded bg-hack-green/10 text-hack-green border border-hack-green/30 shrink-0 font-bold';
+          btn.className = 'channel-btn active px-3 py-1.5 rounded bg-noir-surface text-cream-100 border border-noir-border shrink-0 font-bold';
         } else {
-          btn.className = 'channel-btn px-3 py-1.5 rounded text-hack-muted hover:text-white shrink-0';
+          btn.className = 'channel-btn px-3 py-1.5 rounded text-cream-muted hover:text-cream-100 shrink-0';
         }
       });
 
@@ -1474,26 +1373,21 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       const box = document.getElementById('chat-messages-box');
 
       if (messages.length === 0) {
-        box.innerHTML = `<div class="text-hack-muted text-center py-8">#${currentChannel} channel is quiet. Be the first to broadcast.</div>`;
+        box.innerHTML = `<div class="text-cream-dim text-center py-8">#${currentChannel} channel is quiet.</div>`;
         return;
       }
 
       box.innerHTML = messages.map(m => {
-        let badgeColor = 'bg-hack-border text-hack-muted';
-        if (m.badge === 'ADMIN') badgeColor = 'bg-hack-purple/20 text-hack-purple border border-hack-purple/40';
-        if (m.badge === 'MEMBER' || m.badge === 'CAPTAIN') badgeColor = 'bg-hack-green/20 text-hack-green border border-hack-green/40';
-        if (m.badge === 'RESEARCHER') badgeColor = 'bg-hack-cyan/20 text-hack-cyan border border-hack-cyan/40';
-
         return `
-          <div class="bg-hack-black/50 p-3 rounded-lg border border-hack-border/50 space-y-1">
+          <div class="bg-noir-bg p-3 rounded border border-noir-border space-y-1">
             <div class="flex items-center justify-between">
               <div class="flex items-center space-x-2">
-                <span class="font-bold text-white">${m.sender}</span>
-                <span class="text-[9px] px-1.5 py-0.5 rounded ${badgeColor}">${m.badge || 'AGENT'}</span>
+                <span class="font-bold text-cream-100">${m.sender}</span>
+                <span class="text-[9px] px-1.5 py-0.2 bg-noir-surface border border-noir-border text-cream-muted rounded">${m.badge || 'AGENT'}</span>
               </div>
-              <span class="text-[10px] text-hack-muted">${m.time}</span>
+              <span class="text-[10px] text-cream-dim">${m.time}</span>
             </div>
-            <p class="text-hack-text text-xs leading-relaxed">${escapeHtml(m.text)}</p>
+            <p class="text-cream-muted text-xs leading-relaxed">${escapeHtml(m.text)}</p>
           </div>
         `;
       }).join('');
@@ -1535,9 +1429,8 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
 
       const outputEl = document.getElementById('interactive-term-output');
 
-      // Append user command
       const cmdLine = document.createElement('div');
-      cmdLine.className = 'text-hack-cyan font-bold';
+      cmdLine.className = 'text-cream-100 font-bold';
       cmdLine.innerText = `$ ${cmdStr}`;
       outputEl.appendChild(cmdLine);
 
@@ -1551,16 +1444,12 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       switch (cmd) {
         case 'help':
           responseHtml = `
-            <div class="text-hack-muted">Available Terminal Commands:</div>
-            <div class="grid grid-cols-2 gap-1 text-[10px] pl-2">
-              <div><span class="text-hack-green">help</span> - List commands</div>
-              <div><span class="text-hack-green">clear</span> - Clear terminal</div>
-              <div><span class="text-hack-green">status</span> - System node health</div>
-              <div><span class="text-hack-green">whoami</span> - Display session user</div>
-              <div><span class="text-hack-green">tools</span> - List open tools</div>
-              <div><span class="text-hack-green">ctf</span> - View CTF status</div>
-              <div><span class="text-hack-green">decrypt &lt;hash&gt;</span> - MD5 decryptor</div>
-              <div><span class="text-hack-green">channels</span> - List channels</div>
+            <div class="text-cream-dim">Available Commands:</div>
+            <div class="grid grid-cols-2 gap-1 text-[10px] pl-2 text-cream-muted">
+              <div>help</div><div>clear</div>
+              <div>status</div><div>whoami</div>
+              <div>tools</div><div>ctf</div>
+              <div>decrypt &lt;hash&gt;</div><div>channels</div>
             </div>
           `;
           break;
@@ -1570,55 +1459,37 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
           return;
 
         case 'status':
-          responseHtml = `
-            <div class="text-hack-green">[+] Mesh Nodes: 14 Active | Operational Integrity: 100%</div>
-            <div class="text-hack-muted">[+] Latency: 12ms | Encryption: AES-256-GCM / WireGuard</div>
-          `;
+          responseHtml = `<div class="text-accent-green">[+] Mesh Nodes: 14 Active | Integrity: 100% | Latency: 11ms</div>`;
           break;
 
         case 'whoami':
           const sess = getActiveSession();
-          responseHtml = `
-            <div class="text-hack-yellow">Identity: ${sess ? sess.handle : 'GUEST'}</div>
-            <div class="text-hack-muted">Passkey: ${sess ? sess.passkey : 'NONE'}</div>
-          `;
+          responseHtml = `<div class="text-cream-100">Identity: ${sess ? sess.handle : 'GUEST'} (${sess ? sess.passkey : 'NO_KEY'})</div>`;
           break;
 
         case 'tools':
-          responseHtml = `
-            <div class="text-hack-cyan">1. PhantomRecon-v2 (OSINT Async Crawler)</div>
-            <div class="text-hack-cyan">2. HeapPwn-Forge (GLIBC Exploit Builder)</div>
-            <div class="text-hack-cyan">3. WebVulnTrace (HTTP/2 Desync Fuzzer)</div>
-          `;
+          responseHtml = `<div class="text-cream-muted">1. PhantomRecon-v2 | 2. HeapPwn-Forge | 3. WebVulnTrace</div>`;
           break;
 
         case 'ctf':
-          responseHtml = `
-            <div class="text-hack-purple">[!] Active Event: Global WarRoom CTF 2025</div>
-            <div class="text-hack-muted">Team Rank: #3 | Captures: 42 flags captured</div>
-          `;
+          responseHtml = `<div class="text-cream-muted">[!] WarRoom CTF 2025 - Team Rank #3 (42 flags captured)</div>`;
           break;
 
         case 'channels':
-          responseHtml = `
-            <div class="text-hack-muted">Channels: #announcements, #web-exploitation, #malware-analysis, #reverse-engineering, #osint, #ctf-war-room</div>
-          `;
+          responseHtml = `<div class="text-cream-dim">#announcements, #web-exploitation, #malware-analysis, #reverse-engineering, #osint, #ctf-war-room</div>`;
           break;
 
         case 'decrypt':
           const targetHash = args[1] || '5f4dcc3b5aa765d61d8327deb882cf99';
-          responseHtml = `
-            <div class="text-hack-yellow">[+] Querying rainbow table for ${targetHash}...</div>
-            <div class="text-hack-green">[✓] Hash Decrypted: <span class="font-bold underline text-white">password</span></div>
-          `;
+          responseHtml = `<div class="text-accent-green">[✓] Hash Decrypted: <span class="font-bold underline text-cream-100">password</span></div>`;
           break;
 
         default:
-          responseHtml = `<div class="text-hack-red">Command not recognized: '${cmd}'. Type 'help' for available commands.</div>`;
+          responseHtml = `<div class="text-accent-red">Command not recognized: '${cmd}'. Type 'help'.</div>`;
       }
 
       const respDiv = document.createElement('div');
-      respDiv.className = 'mb-2';
+      respDiv.className = 'mb-1.5';
       respDiv.innerHTML = responseHtml;
       outputEl.appendChild(respDiv);
 
@@ -1626,7 +1497,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
     }
 
     /* ==========================================================================
-       8. UTILITY HELPERS
+       MODAL & SYSTEM HELPERS
        ========================================================================== */
 
     function showModal(title, bodyHtml) {
@@ -1649,7 +1520,7 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       renderAdminKeys();
       checkMemberAuthentication();
 
-      showModal('SYSTEM RESET', 'Local storage state restored to initial default sample records.');
+      showModal('SYSTEM RESET', 'Database state restored to sample default records.');
     }
 
     function clearAllData() {
@@ -1659,14 +1530,13 @@ fuzzer.FuzzEndpoint(<span class="text-hack-green">"https://api.target.internal"<
       renderAdminKeys();
       checkMemberAuthentication();
 
-      showModal('STORAGE CLEARED', 'All local storage items cleared and re-initialized.');
+      showModal('STORAGE CLEARED', 'All local storage records cleared.');
     }
 
     function escapeHtml(str) {
       return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
 
-    // Initialize state on page load
     window.addEventListener('DOMContentLoaded', () => {
       initStorage();
       renderAdminApplications();
